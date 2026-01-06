@@ -36,12 +36,12 @@ const Hero: React.FC = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 pt-4 w-full sm:w-auto">
-            <button className="flex h-16 items-center justify-center rounded-2xl bg-primary px-12 text-lg font-bold text-white shadow-xl shadow-primary/20 hover:bg-primary-dark transition-all hover:-translate-y-1 w-full sm:w-auto">
+            <a href="#consultation" className="flex h-16 items-center justify-center rounded-2xl bg-primary px-12 text-lg font-bold text-white shadow-xl shadow-primary/20 hover:bg-primary-dark transition-all hover:-translate-y-1 w-full sm:w-auto">
               무료 학습진단 신청
-            </button>
-            <button className="flex h-16 items-center justify-center rounded-2xl bg-white/80 backdrop-blur border-2 border-slate-200 px-12 text-lg font-bold text-slate-700 hover:bg-white hover:border-primary transition-all dark:bg-surface-dark dark:border-slate-700 dark:text-white w-full sm:w-auto">
+            </a>
+            <a href="#curriculum" className="flex h-16 items-center justify-center rounded-2xl bg-white/80 backdrop-blur border-2 border-slate-200 px-12 text-lg font-bold text-slate-700 hover:bg-white hover:border-primary transition-all dark:bg-surface-dark dark:border-slate-700 dark:text-white w-full sm:w-auto">
               커리큘럼 안내
-            </button>
+            </a>
           </div>
         </div>
 
