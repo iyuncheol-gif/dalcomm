@@ -1,7 +1,58 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+
+declare global {
+  interface Window {
+    kakao: any;
+  }
+}
 
 const Location: React.FC = () => {
+  const mapRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const initMap = () => {
+      if (!mapRef.current) return;
+
+      // 달콤플러스 위치 좌표 (경기 용인시 처인구 고림로200번길 5)
+      const position = new window.kakao.maps.LatLng(37.2394, 127.1867);
+
+      const options = {
+        center: position,
+        level: 2, // 확대 레벨
+      };
+
+      const map = new window.kakao.maps.Map(mapRef.current, options);
+
+      // 마커 생성
+      const marker = new window.kakao.maps.Marker({
+        position: position,
+        map: map,
+      });
+
+      // 인포윈도우 생성
+      const infowindow = new window.kakao.maps.InfoWindow({
+        content: '<div style="padding:5px;font-size:12px;font-weight:bold;">THE달콤플러스</div>',
+      });
+      infowindow.open(map, marker);
+
+      // 지도 컨트롤 추가
+      const zoomControl = new window.kakao.maps.ZoomControl();
+      map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT);
+    };
+
+    const checkKakao = () => {
+      if (window.kakao && window.kakao.maps) {
+        window.kakao.maps.load(initMap);
+      } else {
+        // SDK가 아직 로드되지 않았으면 100ms 후 재시도
+        setTimeout(checkKakao, 100);
+      }
+    };
+
+    checkKakao();
+  }, []);
+
   return (
     <section className="py-20 bg-background-light dark:bg-background-dark" id="location">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -9,12 +60,10 @@ const Location: React.FC = () => {
           <h2 className="text-3xl font-black text-slate-900 dark:text-white">오시는 길</h2>
         </div>
         <div className="grid md:grid-cols-2 gap-10">
-          <div 
-            className="h-80 w-full rounded-3xl bg-slate-200 overflow-hidden shadow-lg relative group border-4 border-white dark:border-slate-700 bg-cover bg-center" 
-            style={{ backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuAr1JD-6VGv7h7uUEyXNQufQqTjTw2wW_zqQ8W_COCcruoo3utbu-K_WxiBuOnER4awjrDKCgqNioSIBoH2FVjl3HFvqAFKAUqZp0y8ml7gxYdJryghXfqSNAmK1ttPf4ObByzMcJIyp7Gtiu8HMkEbPI_Tq5SH_AZ4CoJ15k_OGhK6AZDb4YC_mqAXGuBufCTtFNplo760COFFoCNOjCHLR1gHP-mnLWst3x06LfI9aVgsBqDtwUBovFG6ycZc8ja78rHzlA4B-8Y')` }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/10 to-transparent pointer-events-none"></div>
-          </div>
+          <div
+            ref={mapRef}
+            className="h-80 w-full rounded-3xl bg-slate-200 overflow-hidden shadow-lg relative border-4 border-white dark:border-slate-700"
+          ></div>
           <div className="flex flex-col justify-center gap-8">
             {[
               { icon: 'location_on', title: '주소', text: '경기 용인시 처인구 고림로200번길 5\n201, 202, 203, 204호 2층' },
