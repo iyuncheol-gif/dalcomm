@@ -14,31 +14,38 @@ const Location: React.FC = () => {
     const initMap = () => {
       if (!mapRef.current) return;
 
-      // 달콤플러스 위치 좌표 (경기 용인시 처인구 고림로200번길 5)
-      const position = new window.kakao.maps.LatLng(37.2394, 127.1867);
+      // 주소로 좌표 검색
+      const geocoder = new window.kakao.maps.services.Geocoder();
+      const address = '경기 용인시 처인구 고림로200번길 5';
 
-      const options = {
-        center: position,
-        level: 2, // 확대 레벨
-      };
+      geocoder.addressSearch(address, (result: any, status: any) => {
+        if (status === window.kakao.maps.services.Status.OK) {
+          const position = new window.kakao.maps.LatLng(result[0].y, result[0].x);
 
-      const map = new window.kakao.maps.Map(mapRef.current, options);
+          const options = {
+            center: position,
+            level: 2, // 확대 레벨
+          };
 
-      // 마커 생성
-      const marker = new window.kakao.maps.Marker({
-        position: position,
-        map: map,
+          const map = new window.kakao.maps.Map(mapRef.current, options);
+
+          // 마커 생성
+          const marker = new window.kakao.maps.Marker({
+            position: position,
+            map: map,
+          });
+
+          // 인포윈도우 생성
+          const infowindow = new window.kakao.maps.InfoWindow({
+            content: '<div style="padding:5px;font-size:12px;font-weight:bold;">THE달콤플러스</div>',
+          });
+          infowindow.open(map, marker);
+
+          // 지도 컨트롤 추가
+          const zoomControl = new window.kakao.maps.ZoomControl();
+          map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT);
+        }
       });
-
-      // 인포윈도우 생성
-      const infowindow = new window.kakao.maps.InfoWindow({
-        content: '<div style="padding:5px;font-size:12px;font-weight:bold;">THE달콤플러스</div>',
-      });
-      infowindow.open(map, marker);
-
-      // 지도 컨트롤 추가
-      const zoomControl = new window.kakao.maps.ZoomControl();
-      map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT);
     };
 
     const checkKakao = () => {
