@@ -11,37 +11,46 @@ const Location: React.FC = () => {
   const mapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (window.kakao && window.kakao.maps) {
-      window.kakao.maps.load(() => {
-        if (!mapRef.current) return;
+    const initMap = () => {
+      if (!mapRef.current) return;
 
-        // 달콤플러스 위치 좌표 (경기 용인시 처인구 고림로200번길 5)
-        const position = new window.kakao.maps.LatLng(37.2394, 127.1867);
+      // 달콤플러스 위치 좌표 (경기 용인시 처인구 고림로200번길 5)
+      const position = new window.kakao.maps.LatLng(37.2394, 127.1867);
 
-        const options = {
-          center: position,
-          level: 3, // 확대 레벨
-        };
+      const options = {
+        center: position,
+        level: 2, // 확대 레벨
+      };
 
-        const map = new window.kakao.maps.Map(mapRef.current, options);
+      const map = new window.kakao.maps.Map(mapRef.current, options);
 
-        // 마커 생성
-        const marker = new window.kakao.maps.Marker({
-          position: position,
-          map: map,
-        });
-
-        // 인포윈도우 생성
-        const infowindow = new window.kakao.maps.InfoWindow({
-          content: '<div style="padding:5px;font-size:12px;font-weight:bold;">THE달콤플러스</div>',
-        });
-        infowindow.open(map, marker);
-
-        // 지도 컨트롤 추가
-        const zoomControl = new window.kakao.maps.ZoomControl();
-        map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT);
+      // 마커 생성
+      const marker = new window.kakao.maps.Marker({
+        position: position,
+        map: map,
       });
-    }
+
+      // 인포윈도우 생성
+      const infowindow = new window.kakao.maps.InfoWindow({
+        content: '<div style="padding:5px;font-size:12px;font-weight:bold;">THE달콤플러스</div>',
+      });
+      infowindow.open(map, marker);
+
+      // 지도 컨트롤 추가
+      const zoomControl = new window.kakao.maps.ZoomControl();
+      map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT);
+    };
+
+    const checkKakao = () => {
+      if (window.kakao && window.kakao.maps) {
+        window.kakao.maps.load(initMap);
+      } else {
+        // SDK가 아직 로드되지 않았으면 100ms 후 재시도
+        setTimeout(checkKakao, 100);
+      }
+    };
+
+    checkKakao();
   }, []);
 
   return (
