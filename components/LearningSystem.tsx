@@ -4,11 +4,11 @@ import React from 'react';
 const LearningSystem: React.FC = () => {
   return (
     <section className="py-20 bg-background-light dark:bg-background-dark" id="system">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl pl-8 pr-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-16 items-center">
           <div className="w-full lg:w-1/2">
             <span className="text-primary font-bold tracking-wider text-sm uppercase">Learning System</span>
-            <h2 className="mt-2 text-3xl font-black text-slate-900 dark:text-white leading-tight">빈틈없는<br/>학습 관리 시스템</h2>
+            <h2 className="mt-2 text-3xl font-black text-slate-900 dark:text-white leading-tight">빈틈없는<br />학습 관리 시스템</h2>
             <p className="mt-4 text-lg text-slate-600 dark:text-slate-300 leading-relaxed word-keep-all">데이터 기반으로 학생의 학습 현황을 분석하고, 학부모님께 투명하게 공유합니다.</p>
             <div className="mt-10 space-y-8">
               {[
@@ -52,7 +52,7 @@ const LearningSystem: React.FC = () => {
                       <span className="text-primary">{stat.score}</span>
                     </div>
                     <div className="h-3 w-full rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden">
-                      <div 
+                      <div
                         className={`h-3 rounded-full bg-primary ${stat.animate ? 'animate-pulse' : ''}`}
                         style={{ width: stat.width }}
                       ></div>

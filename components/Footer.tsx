@@ -2,6 +2,34 @@ import React from "react";
 
 const Footer: React.FC = () => {
   const [isPrivacyOpen, setIsPrivacyOpen] = React.useState(false);
+  const [showTuitionToast, setShowTuitionToast] = React.useState(false);
+  const tuitionRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    // Auto-hide after 3 seconds
+    if (showTuitionToast) {
+      const timer = setTimeout(() => {
+        setShowTuitionToast(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [showTuitionToast]);
+
+  // Close on outside click
+  React.useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (tuitionRef.current && !tuitionRef.current.contains(event.target as Node)) {
+        setShowTuitionToast(false);
+      }
+    }
+
+    if (showTuitionToast) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showTuitionToast]);
 
   const privacyPolicyContent = (
     <div className="space-y-6 text-slate-700 dark:text-slate-300">
@@ -74,7 +102,7 @@ const Footer: React.FC = () => {
   return (
     <>
       <footer className="bg-background-dark py-16 text-slate-400 font-footer border-t border-primary/10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl pl-8 pr-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row justify-between gap-12 mb-16">
             {/* Branding Section */}
             <div className="max-w-md">
@@ -100,19 +128,30 @@ const Footer: React.FC = () => {
               </p>
               <div className="flex gap-4">
                 {[
-                  { label: "KakaoTalk", icon: "chat_bubble" },
-                  { label: "Blog", icon: "rss_feed" },
-                  { label: "Instagram", icon: "photo_camera" },
+                  {
+                    label: "Instagram",
+                    url: "https://www.instagram.com/thesweetenglish",
+                    icon: "instagram.png"
+                  },
+                  {
+                    label: "Naver Blog",
+                    url: "https://blog.naver.com/goodchef",
+                    icon: "naver.png"
+                  },
                 ].map((social, i) => (
                   <a
                     key={i}
-                    className="flex h-10 w-10 items-center justify-center rounded-xl bg-surface-dark text-slate-400 transition hover:bg-accent hover:text-white"
-                    href="#"
+                    className="flex h-10 w-10 items-center justify-center rounded-xl bg-surface-dark text-slate-400 transition hover:bg-accent hover:text-white group"
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <span className="sr-only">{social.label}</span>
-                    <span className="material-symbols-outlined text-lg">
-                      {social.icon}
-                    </span>
+                    <img
+                      src={import.meta.env.BASE_URL + social.icon}
+                      alt={social.label}
+                      className="w-6 h-6 object-contain opacity-70 group-hover:opacity-100"
+                    />
                   </a>
                 ))}
               </div>
@@ -129,9 +168,9 @@ const Footer: React.FC = () => {
                     <span className="material-symbols-outlined text-accent text-[18px]">
                       call
                     </span>
-                    <span className="text-white text-xl font-bold">
+                    <a href="tel:050713388444" className="text-white text-xl font-bold hover:text-accent transition-colors">
                       0507-1338-8444
-                    </span>
+                    </a>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <span className="material-symbols-outlined text-accent text-[18px]">
@@ -162,15 +201,30 @@ const Footer: React.FC = () => {
                     </span>{" "}
                     개인정보처리방침
                   </a>
-                  <a
-                    className="flex items-center gap-1.5 hover:text-accent transition-colors w-fit text-slate-400"
-                    href="#"
-                  >
-                    <span className="material-symbols-outlined text-accent text-[16px]">
-                      chevron_right
-                    </span>{" "}
-                    교습비 안내
-                  </a>
+                  <div className="relative w-fit" ref={tuitionRef}>
+                    <a
+                      className="flex items-center gap-1.5 hover:text-accent transition-colors w-fit text-slate-400 cursor-pointer"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setShowTuitionToast(prev => !prev);
+                      }}
+                    >
+                      <span className="material-symbols-outlined text-accent text-[16px]">
+                        chevron_right
+                      </span>{" "}
+                      교습비 안내
+                    </a>
+                    {showTuitionToast && (
+                      <div className="absolute top-full left-0 sm:left-auto sm:right-0 mt-2 z-[100] animate-fade-in-up w-max max-w-[280px] sm:max-w-xs">
+                        <div className="bg-slate-900/95 backdrop-blur text-white px-4 py-2.5 rounded-xl shadow-xl flex items-start gap-2 text-xs font-medium border border-slate-700/50">
+                          <span className="material-symbols-outlined text-accent text-sm shrink-0 mt-0.5">info</span>
+                          <span className="break-keep leading-relaxed">학생의 상황 및 교육 횟수에 따라 금액은 변경됩니다.</span>
+                        </div>
+                        {/* Little triangle arrow */}
+                        <div className="absolute -top-1 left-4 sm:left-auto sm:right-10 w-2 h-2 bg-slate-900/95 rotate-45 border-l border-t border-slate-700/50"></div>
+                      </div>
+                    )}
+                  </div>
                   <a
                     className="flex items-center gap-1.5 hover:text-accent transition-colors w-fit text-slate-400"
                     href="#location"
@@ -264,6 +318,8 @@ const Footer: React.FC = () => {
           </div>
         </div>
       )}
+
+
     </>
   );
 };

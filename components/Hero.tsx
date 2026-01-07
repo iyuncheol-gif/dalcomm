@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
 
         {/* Scattered Text Animation */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
-          <div className="flex font-black text-slate-900 dark:text-white whitespace-nowrap select-none" style={{ fontSize: '6.5vw' }}>
+          <div className="w-full flex justify-between px-4 font-black text-slate-900 dark:text-white whitespace-nowrap select-none" style={{ fontSize: '6.5vw' }}>
             {letters.map((char, i) => (
               <motion.span
                 key={i}

@@ -32,11 +32,11 @@ const WhySection: React.FC = () => {
           <div className="text-center mb-16">
             <span className="text-accent font-bold tracking-widest text-sm uppercase mb-3 block">Why THE DALKOM PLUS?</span>
             <h2 className="text-3xl font-black text-slate-900 dark:text-white sm:text-5xl leading-tight word-keep-all mb-6">
-              검증된 커리큘럼,<br className="hidden sm:block"/>
+              검증된 커리큘럼<br />
               독보적인 성적 향상
             </h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed word-keep-all max-w-2xl mx-auto">
-              THE달콤플러스는 단순한 강의 전달을 넘어<br className="hidden sm:block"/>
+              THE달콤플러스는 단순한 강의 전달을 넘어<br className="hidden sm:block" />
               학생의 학습 메커니즘을 근본적으로 변화시킵니다.
             </p>
           </div>
