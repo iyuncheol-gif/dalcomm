@@ -85,7 +85,8 @@ const Consultation: React.FC = () => {
                     <label className="block text-sm font-bold text-slate-700 dark:text-slate-300" htmlFor="school">학교</label>
                     <div className="relative">
                       <select
-                        className="block w-full rounded-xl border-slate-200 bg-slate-50/50 py-3.5 px-4 shadow-sm focus:border-primary focus:ring-primary dark:bg-slate-800 dark:border-slate-700 dark:text-white appearance-none bg-none transition-all"
+                        className={`block w-full rounded-xl border-slate-200 bg-slate-50/50 py-3.5 px-4 shadow-sm focus:border-primary focus:ring-primary dark:bg-slate-800 dark:border-slate-700 appearance-none bg-none transition-all ${formData.school === '선택해주세요' ? 'text-slate-400' : 'text-slate-900 dark:text-white'
+                          }`}
                         id="school"
                         style={{ WebkitAppearance: 'none', MozAppearance: 'none', appearance: 'none' }}
                         value={formData.school}
@@ -98,9 +99,9 @@ const Consultation: React.FC = () => {
                         }}
                       >
                         <option disabled>선택해주세요</option>
-                        <option>초등학교</option>
-                        <option>중학교</option>
-                        <option>고등학교</option>
+                        <option className="text-slate-900">초등학교</option>
+                        <option className="text-slate-900">중학교</option>
+                        <option className="text-slate-900">고등학교</option>
                       </select>
                       <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">expand_more</span>
                     </div>
@@ -109,7 +110,8 @@ const Consultation: React.FC = () => {
                     <label className="block text-sm font-bold text-slate-700 dark:text-slate-300" htmlFor="grade">학년</label>
                     <div className="relative">
                       <select
-                        className="block w-full rounded-xl border-slate-200 bg-slate-50/50 py-3.5 px-4 shadow-sm focus:border-primary focus:ring-primary dark:bg-slate-800 dark:border-slate-700 dark:text-white appearance-none bg-none transition-all disabled:opacity-50"
+                        className={`block w-full rounded-xl border-slate-200 bg-slate-50/50 py-3.5 px-4 shadow-sm focus:border-primary focus:ring-primary dark:bg-slate-800 dark:border-slate-700 appearance-none bg-none transition-all disabled:opacity-50 ${formData.grade === '선택해주세요' ? 'text-slate-400' : 'text-slate-900 dark:text-white'
+                          }`}
                         id="grade"
                         style={{ WebkitAppearance: 'none', MozAppearance: 'none', appearance: 'none' }}
                         value={formData.grade}
@@ -118,7 +120,7 @@ const Consultation: React.FC = () => {
                       >
                         <option disabled>선택해주세요</option>
                         {getGradeOptions().map((opt) => (
-                          <option key={opt}>{opt}</option>
+                          <option key={opt} className="text-slate-900">{opt}</option>
                         ))}
                       </select>
                       <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">expand_more</span>

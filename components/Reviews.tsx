@@ -2,6 +2,29 @@
 import React from 'react';
 
 const Reviews: React.FC = () => {
+  const [showMore, setShowMore] = React.useState(false);
+
+  const moreReviews = [
+    {
+      id: 1,
+      content: "이곳만의 커리큘럼도 좋은 점이지만 아이들 잘 파악하셔서 관리잘해주시고 학습습관까지 잘 배울 수 있는곳이기에 만족합니다. 다른데 거쳐오면서 영어시작할 때부터 다녔으면 더욱 좋았겠다라는 아쉬움도 있지만 제대로 공부 할 나이에 늦지않게 알게되어 안도하는 면도 있네요~",
+      author: "중등 학부모님",
+      date: "2023.11.05"
+    },
+    {
+      id: 2,
+      content: "초등아이 늦게 영어를 시작한 편이라 걱정이 많았는데 원서리딩에 감동♡ 매일매일 녹음숙제에, 단어시험부터 문장까지 꼼꼼하고 탄탄히 가르쳐주십니다. 습관을 잘 만들어주셔서 이제는 아이가 스스로 녹음을 합니다^^",
+      author: "초6 학부모님",
+      date: "2023.12.12"
+    },
+    {
+      id: 3,
+      content: "고등 중등 두아이 달콤플러스영어 다니고있어요 단어시험부터 관리해주고 원장님 직강이 있어 학습태도나 학생지도 점검해주셔서 늘감사합니다~~ 이사와서 다니는데 정말 감사합니다 🙏",
+      author: "고등/중등 학부모님",
+      date: "2024.01.10"
+    }
+  ];
+
   return (
     <section className="py-24 bg-white dark:bg-slate-900" id="reviews">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -9,7 +32,7 @@ const Reviews: React.FC = () => {
           <h2 className="text-3xl font-black text-slate-900 dark:text-white">성과로 증명합니다</h2>
           <p className="mt-3 text-lg text-slate-600 dark:text-slate-300">수강 3개월 만에 달라진 변화를 확인하세요.</p>
         </div>
-        
+
         <div className="grid gap-8 lg:grid-cols-2 max-w-5xl mx-auto">
           {/* Comparison Card */}
           <div className="group relative flex flex-col overflow-hidden rounded-3xl bg-white border border-slate-200 shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300 dark:bg-slate-800 dark:border-slate-700">
@@ -28,17 +51,17 @@ const Reviews: React.FC = () => {
                   <p className="text-xs font-bold text-slate-400 mb-1 uppercase tracking-wider">3월 모고</p>
                   <p className="text-2xl font-bold text-slate-400/80 line-through decoration-slate-300 dark:text-slate-500 dark:decoration-slate-600">4등급</p>
                 </div>
-                
+
                 {/* Animated Arrow & Line Path */}
                 <div className="flex-1 mx-4 relative h-10 flex items-center">
                   {/* Background Gray Dashed Line (Static) */}
                   <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 border-t-2 border-dashed border-slate-200 dark:border-slate-700"></div>
-                  
+
                   {/* Success Reveal Layer (Key Color Dashed Line + Arrow) */}
                   <div className="absolute inset-y-0 left-0 animate-reveal-success overflow-visible">
                     {/* Primary Color Dashed Line */}
                     <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 border-t-2 border-dashed border-primary shadow-[0_0_12px_rgba(26,67,50,0.2)] dark:border-accent"></div>
-                    
+
                     {/* Arrow at the Tip - Transition to Key Color */}
                     <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 flex items-center">
                       <span className="material-symbols-outlined text-primary dark:text-accent font-black text-2xl drop-shadow-md">arrow_forward</span>
@@ -54,7 +77,7 @@ const Reviews: React.FC = () => {
                   <p className="text-3xl font-black text-primary dark:text-white">1등급</p>
                 </div>
               </div>
-              
+
               <div className="relative bg-slate-50 rounded-2xl p-5 border border-slate-100 dark:bg-slate-700/30 dark:border-slate-600">
                 <span className="absolute -top-3 left-4 bg-white text-blue-300 px-1 dark:bg-slate-800 dark:text-slate-500">
                   <span className="material-symbols-outlined text-2xl">format_quote</span>
@@ -73,7 +96,7 @@ const Reviews: React.FC = () => {
             <div className="p-8 flex flex-col h-full relative z-10">
               <div className="flex items-center justify-between mb-8">
                 <div className="flex gap-1 text-yellow-400">
-                  {[1,2,3,4,5].map(s => (
+                  {[1, 2, 3, 4, 5].map(s => (
                     <span key={s} className="material-symbols-outlined fill-current text-lg">star</span>
                   ))}
                 </div>
@@ -97,10 +120,40 @@ const Reviews: React.FC = () => {
           </div>
         </div>
 
+        {/* More Reviews (Collapsible) */}
+        {showMore && (
+          <div className="mt-8 grid gap-6 md:grid-cols-3 max-w-7xl mx-auto animate-fade-in-up">
+            {moreReviews.map((review) => (
+              <div key={review.id} className="bg-slate-50 rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all dark:bg-slate-800 dark:border-slate-700">
+                <div className="flex gap-1 text-yellow-400 mb-4 h-4">
+                  {[1, 2, 3, 4, 5].map(s => (
+                    <span key={s} className="material-symbols-outlined fill-current text-sm">star</span>
+                  ))}
+                </div>
+                <p className="text-sm text-slate-700 leading-relaxed mb-6 min-h-[5rem] word-keep-all dark:text-slate-300">
+                  "{review.content}"
+                </p>
+                <div className="flex items-center gap-3 border-t border-slate-200 pt-4 dark:border-slate-700">
+                  <div className="h-8 w-8 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 text-xs dark:bg-slate-700 dark:text-slate-400">
+                    <span className="material-symbols-outlined text-base">person</span>
+                  </div>
+                  <div>
+                    <p className="font-bold text-xs text-slate-900 dark:text-white">{review.author}</p>
+                    <p className="text-[10px] text-slate-400">{review.date}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
         <div className="mt-12 text-center">
-          <button className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-bold text-slate-600 hover:bg-slate-50 hover:text-primary transition-colors shadow-sm dark:bg-slate-800 dark:border-slate-700 dark:text-slate-300 dark:hover:text-white">
-            <span>실제 수강 후기 더보기</span>
-            <span className="material-symbols-outlined text-lg">add</span>
+          <button
+            onClick={() => setShowMore(!showMore)}
+            className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-bold text-slate-600 hover:bg-slate-50 hover:text-primary transition-colors shadow-sm dark:bg-slate-800 dark:border-slate-700 dark:text-slate-300 dark:hover:text-white"
+          >
+            <span>{showMore ? "후기 접기" : "실제 수강 후기 더보기"}</span>
+            <span className={`material-symbols-outlined text-lg transition-transform duration-300 ${showMore ? 'rotate-45' : ''}`}>add</span>
           </button>
         </div>
       </div>
