@@ -2,12 +2,14 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 import './globals.css';
 
+const basePath = process.env.NODE_ENV === 'production' ? '/dalcomm' : '';
+
 export const metadata: Metadata = {
   title: 'THE달콤플러스 - 프리미엄 영어 교육',
   description:
     '결과가 다른 프리미엄 영어 교육. 프리미엄 소수정예, 1:1 밀착 학습 관리, 내신/수능 1등급 목표. THE달콤플러스만의 학습 시스템이 상위권으로 가는 지름길을 제시합니다.',
   icons: {
-    icon: '/logo.png',
+    icon: `${basePath}/logo.png`,
   },
 };
 
