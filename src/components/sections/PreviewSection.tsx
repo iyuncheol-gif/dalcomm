@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { getImagePath } from '@/lib/utils';
 
 export default function PreviewSection() {
   const galleryItems = [
@@ -99,7 +100,7 @@ export default function PreviewSection() {
               )} bg-slate-200 min-h-[250px] md:min-h-0`}
             >
               <Image
-                src={`/${item.image}`}
+                src={getImagePath(`/${item.image}`)}
                 alt={item.title}
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-110"

@@ -5,6 +5,7 @@ import { createPortal } from 'react-dom';
 import Image from 'next/image';
 import { NAV_ITEMS } from '@/constants';
 import { handleScrollClick, scrollToElement } from '@/lib/scroll';
+import { getImagePath } from '@/lib/utils';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -19,7 +20,7 @@ export default function Header() {
         <a href="/" className="flex items-center group relative z-50">
           <div className="flex items-center gap-4">
             <Image
-              src="/logo.png"
+              src={getImagePath('/logo.png')}
               alt="THE달콤플러스 로고"
               width={64}
               height={64}

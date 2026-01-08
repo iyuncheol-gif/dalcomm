@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { CONTACT, BUSINESS_INFO, HOURS, SOCIAL } from '@/constants';
 import { handleScrollClick } from '@/lib/scroll';
+import { getImagePath } from '@/lib/utils';
 import PrivacyModal from '@/components/ui/PrivacyModal';
 
 export default function Footer() {
@@ -44,7 +45,7 @@ export default function Footer() {
             <div className="max-w-md">
               <div className="flex items-center gap-5 mb-6">
                 <Image
-                  src="/logo.png"
+                  src={getImagePath('/logo.png')}
                   alt="THE달콤플러스 로고"
                   width={64}
                   height={64}
@@ -78,7 +79,7 @@ export default function Footer() {
                   >
                     <span className="sr-only">{social.label}</span>
                     <Image
-                      src={`/${social.icon}`}
+                      src={getImagePath(`/${social.icon}`)}
                       alt={social.label}
                       width={24}
                       height={24}
