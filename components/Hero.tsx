@@ -27,6 +27,20 @@ const Hero: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      const headerOffset = 100;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
+
   return (
     <section className="relative overflow-hidden py-20 lg:py-32 bg-white dark:bg-background-dark">
       <div className="absolute inset-0 w-full h-full bg-[#fdfdfd] dark:bg-background-dark overflow-hidden">
@@ -103,10 +117,18 @@ const Hero: React.FC = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 pt-4 w-full sm:w-auto">
-            <a href="#consultation" className="flex h-16 items-center justify-center rounded-2xl bg-primary px-12 text-lg font-bold text-white shadow-xl shadow-primary/20 hover:bg-primary-dark transition-all hover:-translate-y-1 w-full sm:w-auto">
+            <a
+              href="#consultation"
+              className="flex h-16 items-center justify-center rounded-2xl bg-primary px-12 text-lg font-bold text-white shadow-xl shadow-primary/20 hover:bg-primary-dark transition-all hover:-translate-y-1 w-full sm:w-auto"
+              onClick={(e) => handleScroll(e, 'consultation')}
+            >
               무료 학습진단 신청
             </a>
-            <a href="#curriculum" className="flex h-16 items-center justify-center rounded-2xl bg-white/80 backdrop-blur border-2 border-slate-200 px-12 text-lg font-bold text-slate-700 hover:bg-white hover:border-primary transition-all dark:bg-surface-dark dark:border-slate-700 dark:text-white w-full sm:w-auto">
+            <a
+              href="#curriculum"
+              className="flex h-16 items-center justify-center rounded-2xl bg-white/80 backdrop-blur border-2 border-slate-200 px-12 text-lg font-bold text-slate-700 hover:bg-white hover:border-primary transition-all dark:bg-surface-dark dark:border-slate-700 dark:text-white w-full sm:w-auto"
+              onClick={(e) => handleScroll(e, 'curriculum')}
+            >
               커리큘럼 안내
             </a>
           </div>

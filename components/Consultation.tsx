@@ -85,8 +85,7 @@ const Consultation: React.FC = () => {
                     <label className="block text-sm font-bold text-slate-700 dark:text-slate-300" htmlFor="school">학교</label>
                     <div className="relative">
                       <select
-                        className={`block w-full rounded-xl border-slate-200 bg-slate-50/50 py-3.5 px-4 shadow-sm focus:border-primary focus:ring-primary dark:bg-slate-800 dark:border-slate-700 appearance-none bg-none transition-all ${formData.school === '선택해주세요' ? 'text-gray-400' : 'text-slate-900 dark:text-white'
-                          }`}
+                        className="block w-full rounded-xl border-slate-200 bg-slate-50/50 py-3.5 px-4 shadow-sm focus:border-primary focus:ring-primary dark:bg-slate-800 dark:border-slate-700 dark:text-white appearance-none bg-none transition-all"
                         id="school"
                         style={{ WebkitAppearance: 'none', MozAppearance: 'none', appearance: 'none' }}
                         value={formData.school}
@@ -110,8 +109,7 @@ const Consultation: React.FC = () => {
                     <label className="block text-sm font-bold text-slate-700 dark:text-slate-300" htmlFor="grade">학년</label>
                     <div className="relative">
                       <select
-                        className={`block w-full rounded-xl border-slate-200 bg-slate-50/50 py-3.5 px-4 shadow-sm focus:border-primary focus:ring-primary dark:bg-slate-800 dark:border-slate-700 appearance-none bg-none transition-all disabled:opacity-50 ${formData.grade === '선택해주세요' ? 'text-gray-400' : 'text-slate-900 dark:text-white'
-                          }`}
+                        className="block w-full rounded-xl border-slate-200 bg-slate-50/50 py-3.5 px-4 shadow-sm focus:border-primary focus:ring-primary dark:bg-slate-800 dark:border-slate-700 dark:text-white appearance-none bg-none transition-all disabled:opacity-50"
                         id="grade"
                         style={{ WebkitAppearance: 'none', MozAppearance: 'none', appearance: 'none' }}
                         value={formData.grade}

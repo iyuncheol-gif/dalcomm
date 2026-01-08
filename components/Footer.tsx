@@ -31,6 +31,20 @@ const Footer: React.FC = () => {
     };
   }, [showTuitionToast]);
 
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      const headerOffset = 100;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
+
   const privacyPolicyContent = (
     <div className="space-y-6 text-slate-700 dark:text-slate-300">
       <p>
@@ -226,8 +240,9 @@ const Footer: React.FC = () => {
                     )}
                   </div>
                   <a
-                    className="flex items-center gap-1.5 hover:text-accent transition-colors w-fit text-slate-400"
+                    className="flex items-center gap-1.5 hover:text-accent transition-colors w-fit text-slate-400 cursor-pointer"
                     href="#location"
+                    onClick={(e) => handleScroll(e, 'location')}
                   >
                     <span className="material-symbols-outlined text-accent text-[16px]">
                       chevron_right

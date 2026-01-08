@@ -56,6 +56,7 @@ const Header: React.FC = () => {
               key={item.name}
               className="text-sm font-semibold text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-accent transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all hover:after:w-full"
               href={item.href}
+              onClick={(e) => handleScroll(e, item.href.replace('#', ''))}
             >
               {item.name}
             </a>
@@ -63,13 +64,7 @@ const Header: React.FC = () => {
         </nav>
 
         <div className="flex items-center gap-3 relative z-[60]">
-          <a
-            className="hidden sm:flex items-center gap-2 rounded-xl bg-slate-100 px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 transition-colors"
-            href="#"
-          >
-            <span className="material-symbols-outlined text-[20px]">chat</span>
-            <span className="hidden lg:inline">상담톡</span>
-          </a>
+
 
           {/* Mobile Hamburger Button */}
           <button
@@ -123,7 +118,7 @@ const Header: React.FC = () => {
                   key={item.name}
                   className="text-xl font-bold text-slate-800 hover:text-white hover:bg-primary-dark dark:text-slate-200 dark:hover:text-white dark:hover:bg-primary-dark transition-all duration-300 border-b border-slate-100 hover:border-transparent pb-4 pt-2 px-6 rounded-lg w-full block"
                   href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={(e) => handleScroll(e, item.href.replace('#', ''))}
                 >
                   {item.name}
                 </a>
