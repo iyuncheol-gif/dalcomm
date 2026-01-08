@@ -28,9 +28,9 @@ const Problems: React.FC = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <span className="inline-block px-3 py-1 rounded-full bg-blue-50 text-primary font-bold tracking-wider text-xs uppercase mb-3 dark:bg-blue-900/20">Problem & Solution</span>
-          <h2 className="text-3xl font-black text-slate-900 dark:text-white sm:text-4xl word-keep-all">학부모님들의 가장 큰 고민,<br className="block sm:hidden"/> 무엇인가요?</h2>
+          <h2 className="text-3xl font-black text-slate-900 dark:text-white sm:text-4xl word-keep-all">학부모님들의 가장 큰 고민,<br className="block sm:hidden" /> 무엇인가요?</h2>
         </div>
-        
+
         <div className="grid gap-6 lg:grid-cols-3">
           {problems.map((p, i) => (
             <div key={i} className="flex flex-col rounded-3xl overflow-hidden border border-slate-200 shadow-lg bg-white dark:bg-slate-800 dark:border-slate-700 group hover:-translate-y-1 transition-transform duration-300">
@@ -41,8 +41,8 @@ const Problems: React.FC = () => {
                 <h3 className="mb-3 text-xl font-bold text-slate-900 dark:text-white word-keep-all">{p.title}</h3>
                 <p className="text-slate-600 dark:text-slate-300 leading-relaxed word-keep-all text-sm mb-4">{p.desc}</p>
                 <div className="mt-4 pt-4 border-t border-slate-200/60 dark:border-slate-700">
-                  <div className="flex items-start gap-3">
-                    <div className="flex-shrink-0 mt-0.5 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
+                  <div className="flex items-center gap-3">
+                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
                       <span className="material-symbols-outlined text-primary text-sm font-bold">check</span>
                     </div>
                     <p className="text-primary font-bold text-sm leading-snug word-keep-all whitespace-pre-line">{p.solution}</p>
@@ -57,7 +57,7 @@ const Problems: React.FC = () => {
         <div className="mt-16 p-10 bg-gradient-to-r from-primary to-primary-dark rounded-[2.5rem] shadow-[0_20px_40px_-15px_rgba(26,67,50,0.3)] relative overflow-hidden group">
           <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl -mr-20 -mt-20"></div>
           <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-2xl -ml-20 -mb-20"></div>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 text-center relative z-10">
             {[
               { icon: 'person_check', label: '1:1 밀착 관리' },

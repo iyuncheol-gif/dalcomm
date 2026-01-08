@@ -8,6 +8,7 @@ import Curriculum from './components/Curriculum';
 import LearningSystem from './components/LearningSystem';
 import Reviews from './components/Reviews';
 import Teachers from './components/Teachers';
+import PreviewSection from './components/PreviewSection';
 import Classes from './components/Classes';
 import Consultation from './components/Consultation';
 import Location from './components/Location';
@@ -27,6 +28,7 @@ const App: React.FC = () => {
         <LearningSystem />
         <Reviews />
         <Teachers />
+        <PreviewSection />
         <Classes />
         <Consultation />
         <Location />

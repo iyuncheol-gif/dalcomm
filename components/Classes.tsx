@@ -1,8 +1,11 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useInView } from 'framer-motion';
 
 const Classes: React.FC = () => {
   const [activeStep, setActiveStep] = useState(0);
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { amount: 0.5 });
 
   const steps = [
     { title: '상담 예약', desc: '전화 또는 온라인으로 방문 상담 일정을 예약합니다.' },
@@ -12,11 +15,14 @@ const Classes: React.FC = () => {
   ];
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveStep((prev) => (prev + 1) % steps.length);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, [steps.length]);
+    if (isInView) {
+      setActiveStep(0); // Reset to first step when entering view
+      const interval = setInterval(() => {
+        setActiveStep((prev) => (prev + 1) % steps.length);
+      }, 2000);
+      return () => clearInterval(interval);
+    }
+  }, [isInView, steps.length]);
 
   return (
     <section className="py-20 bg-white dark:bg-slate-900" id="classes">
@@ -44,9 +50,9 @@ const Classes: React.FC = () => {
               ))}
             </div>
           </div>
-          
+
           <div className="flex flex-col h-full justify-center">
-            <div className="bg-slate-50/50 dark:bg-primary/5 rounded-[2.5rem] p-10 border border-slate-100 dark:border-primary/10 shadow-sm">
+            <div ref={containerRef} className="bg-slate-50/50 dark:bg-primary/5 rounded-[2.5rem] p-10 border border-slate-100 dark:border-primary/10 shadow-sm">
               <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-10 flex items-center gap-3">
                 <span className="material-symbols-outlined text-primary text-3xl font-bold">check_circle</span>
                 수강 등록 프로세스
@@ -55,8 +61,8 @@ const Classes: React.FC = () => {
                 {steps.map((step, i) => {
                   const isActive = activeStep === i;
                   return (
-                    <div 
-                      key={i} 
+                    <div
+                      key={i}
                       className={`relative flex gap-6 transition-all duration-500 ${isActive ? 'translate-x-2' : 'opacity-40 grayscale-[0.5]'}`}
                     >
                       <div className={`relative z-10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-white border-2 transition-all duration-500 shadow-sm dark:bg-slate-800 ${isActive ? 'border-primary text-primary scale-110 ring-4 ring-primary/10' : 'border-slate-300 text-slate-400'}`}>
