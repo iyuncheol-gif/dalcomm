@@ -1,7 +1,6 @@
+import Image from 'next/image';
 
-import React from 'react';
-
-const Teachers: React.FC = () => {
+export default function Teachers() {
   const staff = [
     {
       name: 'Sarah Kim 원장',
@@ -10,8 +9,8 @@ const Teachers: React.FC = () => {
       career: [
         '연세대학교 영어영문학과 졸업',
         '대치동 대형 어학원 7년 경력',
-        '수능 영어 1등급 배출 다수'
-      ]
+        '수능 영어 1등급 배출 다수',
+      ],
     },
     {
       name: 'James Lee 팀장',
@@ -20,24 +19,35 @@ const Teachers: React.FC = () => {
       career: [
         '한국외국어대학교 영어교육과 졸업',
         '중등 내신 만점 제조기',
-        '꼼꼼한 관리와 피드백'
-      ]
-    }
+        '꼼꼼한 관리와 피드백',
+      ],
+    },
   ];
 
   return (
     <section className="py-20 bg-background-light dark:bg-background-dark" id="teachers">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-12 text-center">최고의 강사진</h2>
+        <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-12 text-center">
+          최고의 강사진
+        </h2>
         <div className="flex flex-col md:flex-row gap-8 justify-center">
           {staff.map((member, i) => (
-            <div key={i} className="group overflow-hidden rounded-2xl bg-white shadow-md dark:bg-slate-800 transition-transform hover:-translate-y-2 w-full md:w-1/2 lg:w-1/3">
-              <div 
-                className="aspect-[4/3] w-full bg-cover bg-top grayscale group-hover:grayscale-0 transition-all duration-500" 
-                style={{ backgroundImage: `url('${member.img}')` }}
-              ></div>
+            <div
+              key={i}
+              className="group overflow-hidden rounded-2xl bg-white shadow-md dark:bg-slate-800 transition-transform hover:-translate-y-2 w-full md:w-1/2 lg:w-1/3"
+            >
+              <div className="aspect-[4/3] w-full relative grayscale group-hover:grayscale-0 transition-all duration-500">
+                <Image
+                  src={member.img}
+                  alt={member.name}
+                  fill
+                  className="object-cover object-top"
+                />
+              </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white">{member.name}</h3>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                  {member.name}
+                </h3>
                 <p className="text-primary font-medium text-sm mb-4">{member.title}</p>
                 <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-300">
                   {member.career.map((line, idx) => (
@@ -54,6 +64,4 @@ const Teachers: React.FC = () => {
       </div>
     </section>
   );
-};
-
-export default Teachers;
+}
