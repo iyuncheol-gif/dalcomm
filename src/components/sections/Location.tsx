@@ -1,15 +1,32 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { CONTACT } from '@/constants';
+
+const KAKAO_MAP_KEY = 'cf7889c611fac8f59e53c3183b893f59';
 
 export default function Location() {
   const mapRef = useRef<HTMLDivElement>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const initMap = () => {
-      if (!mapRef.current) return;
+    // Kakao SDK 스크립트 로드
+    if (window.kakao && window.kakao.maps) {
+      setIsLoaded(true);
+      return;
+    }
 
+    const script = document.createElement('script');
+    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_MAP_KEY}&libraries=services&autoload=false`;
+    script.async = true;
+    script.onload = () => setIsLoaded(true);
+    document.head.appendChild(script);
+  }, []);
+
+  useEffect(() => {
+    if (!isLoaded || !mapRef.current) return;
+
+    const initMap = () => {
       const geocoder = new window.kakao.maps.services.Geocoder();
       const address = CONTACT.ADDRESS;
 
@@ -44,16 +61,8 @@ export default function Location() {
       });
     };
 
-    const checkKakao = () => {
-      if (window.kakao && window.kakao.maps) {
-        window.kakao.maps.load(initMap);
-      } else {
-        setTimeout(checkKakao, 100);
-      }
-    };
-
-    checkKakao();
-  }, []);
+    window.kakao.maps.load(initMap);
+  }, [isLoaded]);
 
   return (
     <section className="py-20 bg-background-light dark:bg-background-dark" id="location">

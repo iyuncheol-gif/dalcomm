@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
 import './globals.css';
 
 const basePath = process.env.NODE_ENV === 'production' ? '/dalcomm' : '';
@@ -39,12 +38,6 @@ export default function RootLayout({
       </head>
       <body className="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden">
         {children}
-
-        {/* Kakao Map SDK */}
-        <Script
-          src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_MAP_KEY}&libraries=services&autoload=false`}
-          strategy="afterInteractive"
-        />
       </body>
     </html>
   );
