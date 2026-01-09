@@ -1,5 +1,12 @@
 import type { Metadata } from 'next';
+import { Noto_Sans_KR } from 'next/font/google';
 import './globals.css';
+
+const notoSansKr = Noto_Sans_KR({
+  subsets: ['latin'],
+  weight: ['100', '300', '400', '500', '700', '900'],
+  display: 'swap',
+});
 
 const basePath = process.env.NODE_ENV === 'production' ? '/dalcomm' : '';
 
@@ -21,22 +28,12 @@ export default function RootLayout({
     <html lang="ko" className="light">
       <head>
         {/* Fonts */}
-        <link href="https://fonts.googleapis.com" rel="preconnect" />
-        <link crossOrigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect" />
-        <link
-          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
-          rel="stylesheet"
-        />
         <link
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden">
+      <body className={`${notoSansKr.className} bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden`}>
         {children}
       </body>
     </html>

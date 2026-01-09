@@ -1,9 +1,31 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function Reviews() {
   const [showMore, setShowMore] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const animationRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (animationRef.current) {
+      observer.observe(animationRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   const moreReviews = [
     {
@@ -69,9 +91,9 @@ export default function Reviews() {
                 </div>
 
                 {/* Animated Arrow & Line Path */}
-                <div className="flex-1 mx-4 relative h-10 flex items-center">
+                <div className="flex-1 mx-4 relative h-10 flex items-center" ref={animationRef}>
                   <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 border-t-2 border-dashed border-slate-200 dark:border-slate-700"></div>
-                  <div className="absolute inset-y-0 left-0 animate-reveal-success overflow-visible">
+                  <div className={`absolute inset-y-0 left-0 overflow-visible ${isVisible ? 'animate-reveal-success' : 'invisible'}`}>
                     <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 border-t-2 border-dashed border-primary shadow-[0_0_12px_rgba(26,67,50,0.2)] dark:border-accent"></div>
                     <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 flex items-center">
                       <span className="material-symbols-outlined text-primary dark:text-accent font-black text-2xl drop-shadow-md">
@@ -150,38 +172,62 @@ export default function Reviews() {
 
         {/* More Reviews */}
         {showMore && (
-          <div className="mt-8 grid gap-6 md:grid-cols-3 max-w-7xl mx-auto animate-fade-in-up">
-            {moreReviews.map((review) => (
-              <div
-                key={review.id}
-                className="bg-slate-50 rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all dark:bg-slate-800 dark:border-slate-700"
-              >
-                <div className="flex gap-1 text-yellow-400 mb-4 h-4">
-                  {[1, 2, 3, 4, 5].map((s) => (
-                    <span
-                      key={s}
-                      className="material-symbols-outlined fill-current text-sm"
-                    >
-                      star
+          <div className="mt-12 grid gap-8 md:grid-cols-3 max-w-7xl mx-auto animate-fade-in-up pb-12 px-2">
+            {moreReviews.map((review, index) => {
+              // Zigzag & Rotation Logic
+              const rotateClass =
+                index % 3 === 0
+                  ? '-rotate-[2deg]'
+                  : index % 3 === 1
+                    ? 'rotate-[1deg]'
+                    : '-rotate-[1deg]';
+              const translateClass =
+                index % 2 === 0 ? 'translate-y-0' : 'md:translate-y-8';
+
+              return (
+                <div
+                  key={review.id}
+                  className={`group relative bg-white rounded-[2rem] p-8 border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-300 dark:bg-slate-800 dark:border-slate-700 overflow-hidden ${rotateClass} ${translateClass}`}
+                >
+                  <div className="absolute top-6 right-6 text-slate-100 dark:text-slate-700 -z-0 group-hover:scale-110 transition-transform duration-500">
+                    <span className="material-symbols-outlined text-6xl">
+                      format_quote
                     </span>
-                  ))}
-                </div>
-                <p className="text-sm text-slate-700 leading-relaxed mb-6 min-h-[5rem] word-keep-all dark:text-slate-300">
-                  &quot;{review.content}&quot;
-                </p>
-                <div className="flex items-center gap-3 border-t border-slate-200 pt-4 dark:border-slate-700">
-                  <div className="h-8 w-8 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 text-xs dark:bg-slate-700 dark:text-slate-400">
-                    <span className="material-symbols-outlined text-base">person</span>
                   </div>
-                  <div>
-                    <p className="font-bold text-xs text-slate-900 dark:text-white">
-                      {review.author}
+
+                  <div className="relative z-10 flex flex-col h-full">
+                    <div className="flex gap-1 text-[#FFD700] mb-6">
+                      {[1, 2, 3, 4, 5].map((s) => (
+                        <span
+                          key={s}
+                          className="material-symbols-outlined fill-current text-sm"
+                        >
+                          star
+                        </span>
+                      ))}
+                    </div>
+                    <p className="text-slate-600 dark:text-slate-300 leading-loose mb-8 flex-1 word-keep-all text-[15px]">
+                      &quot;{review.content}&quot;
                     </p>
-                    <p className="text-[10px] text-slate-400">{review.date}</p>
+                    <div className="flex items-center gap-4 pt-6 border-t border-slate-50 dark:border-slate-700/50">
+                      <div className="h-10 w-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 dark:bg-slate-700 dark:text-slate-300">
+                        <span className="material-symbols-outlined text-xl">
+                          person
+                        </span>
+                      </div>
+                      <div>
+                        <p className="font-bold text-slate-900 dark:text-white">
+                          {review.author}
+                        </p>
+                        <p className="text-xs text-slate-400 font-medium mt-0.5">
+                          {review.date}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
 
@@ -192,9 +238,8 @@ export default function Reviews() {
           >
             <span>{showMore ? '후기 접기' : '실제 수강 후기 더보기'}</span>
             <span
-              className={`material-symbols-outlined text-lg transition-transform duration-300 ${
-                showMore ? 'rotate-45' : ''
-              }`}
+              className={`material-symbols-outlined text-lg transition-transform duration-300 ${showMore ? 'rotate-45' : ''
+                }`}
             >
               add
             </span>

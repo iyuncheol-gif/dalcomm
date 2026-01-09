@@ -2,6 +2,7 @@ export const CONTACT = {
   PHONE: '0507-1338-8444',
   PHONE_HREF: 'tel:050713388444',
   KAKAO_ID: 'dalkom_eng',
+  EMAIL: 'goodchef@naver.com',
   ADDRESS: '경기 용인시 처인구 고림로200번길 5',
   ADDRESS_DETAIL: '201, 202, 203, 204호 2층',
 } as const;

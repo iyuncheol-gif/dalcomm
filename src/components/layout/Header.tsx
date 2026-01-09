@@ -87,7 +87,7 @@ export default function Header() {
             />
 
             {/* Drawer Panel */}
-            <div className="relative w-[75%] max-w-xs h-full bg-white/95 backdrop-blur-xl shadow-2xl flex flex-col p-6 animate-slide-in-right border-l border-slate-100">
+            <div className="relative w-[50%] h-full bg-white/95 backdrop-blur-xl shadow-2xl flex flex-col p-6 animate-slide-in-right border-l border-slate-100">
               {/* Drawer Header */}
               <div className="flex items-center justify-end mb-8">
                 <button
@@ -99,11 +99,11 @@ export default function Header() {
                 </button>
               </div>
 
-              <nav className="flex flex-col gap-4 text-left">
+              <nav className="flex flex-col gap-4 text-center">
                 {NAV_ITEMS.map((item) => (
                   <a
                     key={item.name}
-                    className="text-xl font-bold text-slate-800 hover:text-white hover:bg-primary-dark dark:text-slate-200 dark:hover:text-white dark:hover:bg-primary-dark transition-all duration-300 border-b border-slate-100 hover:border-transparent pb-4 pt-2 px-6 rounded-lg w-full block"
+                    className="text-xl font-bold text-slate-800 hover:text-white hover:bg-primary-dark dark:text-slate-200 dark:hover:text-white dark:hover:bg-primary-dark transition-all duration-300 border-b border-slate-100 hover:border-transparent py-4 px-6 rounded-lg w-full block"
                     href={item.href}
                     onClick={(e) => handleNavClick(e, item.href.replace('#', ''))}
                   >

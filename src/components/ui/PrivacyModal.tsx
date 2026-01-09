@@ -140,8 +140,8 @@ function PrivacyPolicyContent() {
         </p>
         <ul className="list-disc pl-5 mt-1">
           <li>개인정보 보호책임자: [원장님 또는 관리자 성함]</li>
-          <li>전화번호: [학원 전화번호 입력]</li>
-          <li>이메일: [학원 이메일 입력]</li>
+          <li>전화번호: 0507-1338-8444</li>
+          <li>이메일: goodchef@naver.com</li>
         </ul>
       </div>
     </div>

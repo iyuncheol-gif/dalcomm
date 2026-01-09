@@ -4,12 +4,20 @@ import { useState } from 'react';
 import { CONTACT } from '@/constants';
 
 export default function Consultation() {
+  const PHONE_REGEX = /^010-?([0-9]{3,4})-?([0-9]{4})$/;
+
   const [formData, setFormData] = useState({
     name: '',
     school: '선택해주세요',
     grade: '선택해주세요',
     phone: '',
     inquiry: '',
+    privacy: false,
+  });
+
+  const [errors, setErrors] = useState({
+    name: false,
+    phone: false,
     privacy: false,
   });
 
@@ -21,12 +29,30 @@ export default function Consultation() {
     return [];
   };
 
+  const handlePhoneBlur = () => {
+    if (formData.phone.trim() && !PHONE_REGEX.test(formData.phone)) {
+      setErrors((prev) => ({ ...prev, phone: true }));
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.privacy) {
-      alert('개인정보 수집 및 이용에 동의해주세요.');
+
+    // Sequential validation
+    if (!formData.name.trim()) {
+      setErrors({ name: true, phone: false, privacy: false });
       return;
     }
+    if (!formData.phone.trim() || !PHONE_REGEX.test(formData.phone)) {
+      setErrors({ name: false, phone: true, privacy: false });
+      return;
+    }
+    if (!formData.privacy) {
+      setErrors({ name: false, phone: false, privacy: true });
+      return;
+    }
+
+    setErrors({ name: false, phone: false, privacy: false });
     alert(`${formData.name}님의 상담 신청이 완료되었습니다. 곧 연락드리겠습니다!`);
   };
 
@@ -91,25 +117,31 @@ export default function Consultation() {
 
               <div className="mt-16 text-sm text-slate-400 relative z-10 pt-8 border-t border-white/10">
                 <div className="flex flex-wrap gap-x-6 gap-y-3">
-                  <p className="flex items-center gap-2 font-medium">
+                  <a
+                    href={`tel:${CONTACT.PHONE}`}
+                    className="flex items-center gap-2 font-medium hover:text-white transition-colors"
+                  >
                     <span className="material-symbols-outlined text-primary-light text-base text-accent">
                       call
                     </span>{' '}
                     문의: {CONTACT.PHONE}
-                  </p>
-                  <p className="flex items-center gap-2 font-medium">
+                  </a>
+                  <a
+                    href={`mailto:${CONTACT.EMAIL}`}
+                    className="flex items-center gap-2 font-medium hover:text-white transition-colors"
+                  >
                     <span className="material-symbols-outlined text-primary-light text-base text-accent">
-                      chat
+                      mail
                     </span>{' '}
-                    카톡 ID: {CONTACT.KAKAO_ID}
-                  </p>
+                    이메일: {CONTACT.EMAIL}
+                  </a>
                 </div>
               </div>
             </div>
 
             {/* Right Column: Form */}
             <div className="p-10 lg:w-3/5 lg:p-14 bg-white dark:bg-slate-900">
-              <form onSubmit={handleSubmit} className="space-y-7">
+              <form onSubmit={handleSubmit} className="space-y-7" noValidate>
                 <div className="grid grid-cols-1 gap-7 sm:grid-cols-3">
                   <div className="space-y-2">
                     <label
@@ -119,16 +151,24 @@ export default function Consultation() {
                       학생 이름
                     </label>
                     <input
-                      required
-                      className="block w-full rounded-xl border-slate-200 bg-slate-50/50 py-3.5 px-4 shadow-sm focus:border-primary focus:ring-primary dark:bg-slate-800 dark:border-slate-700 dark:text-white transition-all"
+                      className={`block w-full rounded-xl border py-3.5 px-4 shadow-sm focus:ring-primary dark:bg-slate-800 transition-all ${errors.name
+                        ? 'border-red-500 focus:border-red-500'
+                        : 'border-slate-200 focus:border-primary dark:border-slate-700'
+                        } dark:text-white`}
                       id="student-name"
                       placeholder="예: 홍길동"
                       type="text"
                       value={formData.name}
-                      onChange={(e) =>
-                        setFormData({ ...formData, name: e.target.value })
-                      }
+                      onChange={(e) => {
+                        setFormData({ ...formData, name: e.target.value });
+                        if (errors.name) setErrors((prev) => ({ ...prev, name: false }));
+                      }}
                     />
+                    {errors.name && (
+                      <p className="text-sm text-red-500 mt-1">
+                        이름을 입력하세요.
+                      </p>
+                    )}
                   </div>
                   <div className="space-y-2">
                     <label
@@ -139,11 +179,10 @@ export default function Consultation() {
                     </label>
                     <div className="relative">
                       <select
-                        className={`block w-full rounded-xl border-slate-200 bg-slate-50/50 py-3.5 px-4 shadow-sm focus:border-primary focus:ring-primary dark:bg-slate-800 dark:border-slate-700 appearance-none bg-none transition-all ${
-                          formData.school === '선택해주세요'
-                            ? 'text-slate-400'
-                            : 'text-slate-900 dark:text-white'
-                        }`}
+                        className={`block w-full rounded-xl border-slate-200 bg-slate-50/50 py-3.5 px-4 shadow-sm focus:border-primary focus:ring-primary dark:bg-slate-800 dark:border-slate-700 appearance-none bg-none transition-all ${formData.school === '선택해주세요'
+                          ? 'text-slate-400'
+                          : 'text-slate-900 dark:text-white'
+                          }`}
                         id="school"
                         style={{
                           WebkitAppearance: 'none',
@@ -178,11 +217,10 @@ export default function Consultation() {
                     </label>
                     <div className="relative">
                       <select
-                        className={`block w-full rounded-xl border-slate-200 bg-slate-50/50 py-3.5 px-4 shadow-sm focus:border-primary focus:ring-primary dark:bg-slate-800 dark:border-slate-700 appearance-none bg-none transition-all disabled:opacity-50 ${
-                          formData.grade === '선택해주세요'
-                            ? 'text-slate-400'
-                            : 'text-slate-900 dark:text-white'
-                        }`}
+                        className={`block w-full rounded-xl border-slate-200 bg-slate-50/50 py-3.5 px-4 shadow-sm focus:border-primary focus:ring-primary dark:bg-slate-800 dark:border-slate-700 appearance-none bg-none transition-all disabled:opacity-50 ${formData.grade === '선택해주세요'
+                          ? 'text-slate-400'
+                          : 'text-slate-900 dark:text-white'
+                          }`}
                         id="grade"
                         style={{
                           WebkitAppearance: 'none',
@@ -215,16 +253,28 @@ export default function Consultation() {
                       학부모 연락처
                     </label>
                     <input
-                      required
-                      className="block w-full rounded-xl border-slate-200 bg-slate-50/50 py-3.5 px-4 shadow-sm focus:border-primary focus:ring-primary dark:bg-slate-800 dark:border-slate-700 dark:text-white transition-all"
+                      className={`block w-full rounded-xl border py-3.5 px-4 shadow-sm focus:ring-primary dark:bg-slate-800 transition-all ${errors.phone
+                        ? 'border-red-500 focus:border-red-500'
+                        : 'border-slate-200 focus:border-primary dark:border-slate-700'
+                        } dark:text-white`}
                       id="phone"
                       placeholder="010-0000-0000"
                       type="tel"
                       value={formData.phone}
-                      onChange={(e) =>
-                        setFormData({ ...formData, phone: e.target.value })
-                      }
+                      onChange={(e) => {
+                        const value = e.target.value.replace(/[^0-9-]/g, '');
+                        setFormData({ ...formData, phone: value });
+                        if (errors.phone) setErrors((prev) => ({ ...prev, phone: false }));
+                      }}
+                      onBlur={handlePhoneBlur}
                     />
+                    {errors.phone && (
+                      <p className="text-sm text-red-500 mt-1">
+                        {!formData.phone.trim()
+                          ? '연락처를 입력하세요.'
+                          : '올바른 휴대폰 번호 형식을 입력해주세요. (예: 010-0000-0000)'}
+                      </p>
+                    )}
                   </div>
                   <div className="sm:col-span-3 space-y-2">
                     <label
@@ -246,25 +296,42 @@ export default function Consultation() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-100 dark:border-slate-800">
-                  <div className="flex h-6 items-center">
-                    <input
-                      required
-                      className="h-5 w-5 rounded-md border-slate-300 text-primary focus:ring-primary transition-all cursor-pointer"
-                      id="privacy"
-                      type="checkbox"
-                      checked={formData.privacy}
-                      onChange={(e) =>
-                        setFormData({ ...formData, privacy: e.target.checked })
-                      }
-                    />
-                  </div>
-                  <label
-                    className="text-sm font-medium text-slate-600 dark:text-slate-400 cursor-pointer select-none"
-                    htmlFor="privacy"
+                <div>
+                  <div
+                    className={`flex items-center gap-3 bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border transition-all ${errors.privacy
+                      ? 'border-red-500'
+                      : 'border-slate-100 dark:border-slate-800'
+                      }`}
                   >
-                    개인정보 수집 및 이용에 동의합니다.
-                  </label>
+                    <div className="flex h-6 items-center">
+                      <input
+                        required
+                        className="h-5 w-5 rounded-md border-slate-300 text-primary focus:ring-primary transition-all cursor-pointer"
+                        id="privacy"
+                        type="checkbox"
+                        checked={formData.privacy}
+                        onChange={(e) => {
+                          setFormData({
+                            ...formData,
+                            privacy: e.target.checked,
+                          });
+                          if (errors.privacy)
+                            setErrors((prev) => ({ ...prev, privacy: false }));
+                        }}
+                      />
+                    </div>
+                    <label
+                      className="text-sm font-medium text-slate-600 dark:text-slate-400 cursor-pointer select-none"
+                      htmlFor="privacy"
+                    >
+                      개인정보 수집 및 이용에 동의합니다.
+                    </label>
+                  </div>
+                  {errors.privacy && (
+                    <p className="text-sm text-red-500 mt-1 ml-1">
+                      개인정보 수집 및 이용에 동의해주세요.
+                    </p>
+                  )}
                 </div>
 
                 <div className="pt-2">
@@ -278,7 +345,7 @@ export default function Consultation() {
                     </span>
                   </button>
                   <p className="mt-4 text-center text-[13px] text-slate-400 font-medium">
-                    신청 후 24시간 이내에 전문 상담 선생님이 연락드립니다.
+                    신청 후 24시간 이내에 원장 선생님이 연락드립니다.
                   </p>
                 </div>
               </form>
