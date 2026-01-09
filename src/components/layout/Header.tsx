@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom';
 import Image from 'next/image';
 import { NAV_ITEMS } from '@/constants';
 import { handleScrollClick, scrollToElement } from '@/lib/scroll';
-import { getImagePath } from '@/lib/utils';
+import { basePath, getImagePath } from '@/lib/utils';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -17,7 +17,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/95 backdrop-blur-md dark:border-slate-800 dark:bg-background-dark/95 transition-all duration-300">
       <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <a href="/" className="flex items-center group relative z-50">
+        <a href={basePath} className="flex items-center group relative z-50">
           <div className="flex items-center gap-4">
             <Image
               src={getImagePath('/logo.png')}
