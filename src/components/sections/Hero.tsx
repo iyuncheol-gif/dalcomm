@@ -68,44 +68,44 @@ export default function Hero() {
                   animate={
                     isMerged
                       ? {
-                          x: 0,
-                          y: 0,
-                          opacity: 0.05,
-                          rotate: 0,
-                        }
+                        x: 0,
+                        y: 0,
+                        opacity: 0.05,
+                        rotate: 0,
+                      }
                       : {
-                          x: [
-                            `${letterInitials[i].x}vw`,
-                            `${letterInitials[i].x + letterInitials[i].dx}vw`,
-                            `${letterInitials[i].x}vw`,
-                          ],
-                          y: [
-                            `${letterInitials[i].y}vh`,
-                            `${letterInitials[i].y + letterInitials[i].dy}vh`,
-                            `${letterInitials[i].y}vh`,
-                          ],
-                          rotate: [
-                            letterInitials[i].r,
-                            letterInitials[i].r + letterInitials[i].dr,
-                            letterInitials[i].r,
-                          ],
-                          opacity: [0.1, 0.3, 0.1],
-                        }
+                        x: [
+                          `${letterInitials[i].x}vw`,
+                          `${letterInitials[i].x + letterInitials[i].dx}vw`,
+                          `${letterInitials[i].x}vw`,
+                        ],
+                        y: [
+                          `${letterInitials[i].y}vh`,
+                          `${letterInitials[i].y + letterInitials[i].dy}vh`,
+                          `${letterInitials[i].y}vh`,
+                        ],
+                        rotate: [
+                          letterInitials[i].r,
+                          letterInitials[i].r + letterInitials[i].dr,
+                          letterInitials[i].r,
+                        ],
+                        opacity: [0.1, 0.3, 0.1],
+                      }
                   }
                   transition={
                     isMerged
                       ? {
-                          duration: 1.5,
-                          ease: 'easeOut',
-                          type: 'spring',
-                          damping: 20,
-                        }
+                        duration: 1.5,
+                        ease: 'easeOut',
+                        type: 'spring',
+                        damping: 20,
+                      }
                       : {
-                          duration: letterInitials[i].duration,
-                          repeat: Infinity,
-                          repeatType: 'reverse',
-                          ease: 'easeInOut',
-                        }
+                        duration: letterInitials[i].duration,
+                        repeat: Infinity,
+                        repeatType: 'reverse',
+                        ease: 'easeInOut',
+                      }
                   }
                   className="inline-block"
                 >
@@ -138,7 +138,7 @@ export default function Hero() {
             결과가 다른 프리미엄!
             <br />
             <span className="text-primary dark:text-accent relative inline-block">
-              THE달콤플러스
+              달콤플러스
               <span className="absolute -bottom-2 left-0 right-0 h-1.5 bg-accent/30 rounded-full"></span>
             </span>{' '}
             영어
@@ -148,7 +148,7 @@ export default function Hero() {
             단순 암기를 넘어선 논리적 독해와 문법 완성.
             <br className="hidden sm:block" />
             <span className="text-primary dark:text-accent font-bold">
-              THE달콤플러스만의 학습 시스템
+              달콤플러스만의 학습 시스템
             </span>
             이 상위권으로 가는 지름길을 제시합니다.
           </p>

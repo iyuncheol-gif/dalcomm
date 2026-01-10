@@ -51,7 +51,7 @@ export default function Location() {
 
           const infowindow = new window.kakao.maps.InfoWindow({
             content:
-              '<div style="padding:5px;font-size:12px;font-weight:bold;">THE달콤플러스</div>',
+              '<div style="padding:5px;font-size:12px;font-weight:bold;">달콤플러스</div>',
           });
           infowindow.open(map, marker);
 

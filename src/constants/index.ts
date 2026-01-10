@@ -8,7 +8,7 @@ export const CONTACT = {
 } as const;
 
 export const BUSINESS_INFO = {
-  NAME: 'THE달콤플러스 어학원',
+  NAME: '달콤플러스 어학원',
   REPRESENTATIVE: '김달콤',
   REGISTRATION: '교육청 등록 제1234호',
 } as const;

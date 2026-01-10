@@ -46,14 +46,14 @@ export default function Footer() {
               <div className="flex items-center gap-5 mb-6">
                 <Image
                   src={getImagePath('/logo.png')}
-                  alt="THE달콤플러스 로고"
+                  alt="달콤플러스 로고"
                   width={64}
                   height={64}
                   className="h-16 w-16 object-cover rounded-full"
                 />
                 <div className="flex flex-col">
                   <span className="font-sans text-2xl font-black text-white leading-none">
-                    THE달콤플러스
+                    달콤플러스
                   </span>
                   <span className="text-xs font-bold text-accent tracking-[0.2em] mt-1.5 opacity-80 uppercase">
                     Premium English Academy
@@ -63,7 +63,7 @@ export default function Footer() {
               <p className="text-base leading-relaxed mb-8 font-sans font-medium text-slate-300 word-keep-all">
                 변화하는 입시 환경 속에서 흔들리지 않는 실력을 만듭니다.
                 <br className="hidden md:block" />
-                결과로 증명하는 프리미엄 영어 교육, THE달콤플러스.
+                결과로 증명하는 프리미엄 영어 교육, 달콤플러스.
               </p>
               <div className="flex gap-4">
                 {[
@@ -204,7 +204,7 @@ export default function Footer() {
               </div>
 
               <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-medium text-slate-600 uppercase tracking-widest">
-                <p>© 2024 THE DALKOM PLUS ACADEMY. ALL RIGHTS RESERVED.</p>
+                <p>© 2024 DALKOM PLUS ACADEMY. ALL RIGHTS RESERVED.</p>
                 <div className="flex gap-6">
                   <a href="#" className="hover:text-slate-400 transition-colors">
                     Terms of Use

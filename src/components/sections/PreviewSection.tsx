@@ -81,7 +81,7 @@ export default function PreviewSection() {
             transition={{ delay: 0.2 }}
             className="mt-4 text-slate-600 dark:text-slate-400 max-w-2xl mx-auto word-keep-all"
           >
-            학생들이 오직 공부에만 집중할 수 있도록 설계된 THE달콤플러스만의 공간을
+            학생들이 오직 공부에만 집중할 수 있도록 설계된 달콤플러스만의 공간을
             미리 둘러보세요.
           </motion.p>
         </div>

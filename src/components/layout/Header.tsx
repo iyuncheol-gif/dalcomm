@@ -21,14 +21,14 @@ export default function Header() {
           <div className="flex items-center gap-4">
             <Image
               src={getImagePath('/logo.png')}
-              alt="THE달콤플러스 로고"
+              alt="달콤플러스 로고"
               width={64}
               height={64}
               className="h-12 w-auto object-contain transition-transform duration-500 group-hover:rotate-[5deg] group-hover:scale-110 sm:h-16"
             />
             <div className="flex flex-col">
               <span className="font-display text-xl font-black tracking-tight text-primary dark:text-white leading-none sm:text-2xl">
-                THE달콤플러스
+                달콤플러스
               </span>
               <span className="text-[9px] font-bold text-accent tracking-[0.2em] uppercase mt-1.5 opacity-80 sm:text-[10px]">
                 Premium English Academy
