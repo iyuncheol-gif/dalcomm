@@ -52,21 +52,21 @@ export default function Classes() {
             <div className="space-y-5 flex-1">
               {[
                 {
-                  title: '소수정예 정규반',
-                  tags: '주 2-3회',
-                  desc: '학년별/레벨별 최대 6명 정원으 운영되며, 꼼꼼한 개별 케어가 가능합니다.',
+                  title: '초등부 저학년',
+                  tags: '주 4회',
+                  desc: '학년별/레벨별 최대 6명 정원으로 운영되며, 다양한 그룹활동과 동시에 꼼꼼한 케어가 가능합니다.',
                   icon: 'groups',
                 },
                 {
-                  title: '1:1 집중 코칭반',
-                  tags: '주 1회 이상',
-                  desc: '개별 진도로 부족한 영역을 집중 보완합니다. 맞춤형 커리큘럼을 제공합니다.',
+                  title: '초고학년 ~ 중등부',
+                  tags: '주 3회',
+                  desc: '각 혁년 및 레벨에 맞는 맞춤형 커리큘럼을 제공합니다.',
                   icon: 'person',
                 },
                 {
-                  title: '시험기간 특강',
-                  tags: '시험 4주 전',
-                  desc: '중간/기말고사 대비 기간 한정 운영. 학교별 기출 분석과 예상 문제 풀이로 내신을 완벽 대비합니다.',
+                  title: '고등부',
+                  tags: '주2회+주밀특강',
+                  desc: '평소에 모의고사 분석을 통해 실력을 쌓고, 시험기간에는, 학교별 기출 분석과 예상 문제 풀이로 내신을 완벽 대비합니다.',
                   icon: 'event_note',
                 },
               ].map((item, i) => (
@@ -110,35 +110,31 @@ export default function Classes() {
                   return (
                     <div
                       key={i}
-                      className={`relative flex gap-6 transition-all duration-500 ${
-                        isActive ? 'translate-x-2' : 'opacity-40 grayscale-[0.5]'
-                      }`}
+                      className={`relative flex gap-6 transition-all duration-500 ${isActive ? 'translate-x-2' : 'opacity-40 grayscale-[0.5]'
+                        }`}
                     >
                       <div
-                        className={`relative z-10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-white border-2 transition-all duration-500 shadow-sm dark:bg-slate-800 ${
-                          isActive
-                            ? 'border-primary text-primary scale-110 ring-4 ring-primary/10'
-                            : 'border-slate-300 text-slate-400'
-                        }`}
+                        className={`relative z-10 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-white border-2 transition-all duration-500 shadow-sm dark:bg-slate-800 ${isActive
+                          ? 'border-primary text-primary scale-110 ring-4 ring-primary/10'
+                          : 'border-slate-300 text-slate-400'
+                          }`}
                       >
                         <span className="font-bold text-lg">{i + 1}</span>
                       </div>
                       <div className="flex flex-col justify-center">
                         <h4
-                          className={`font-black transition-all duration-500 word-keep-all ${
-                            isActive
-                              ? 'text-primary dark:text-accent text-xl scale-105 origin-left'
-                              : 'text-slate-700 dark:text-slate-300 text-lg'
-                          }`}
+                          className={`font-black transition-all duration-500 word-keep-all ${isActive
+                            ? 'text-primary dark:text-accent text-xl scale-105 origin-left'
+                            : 'text-slate-700 dark:text-slate-300 text-lg'
+                            }`}
                         >
                           {step.title}
                         </h4>
                         <p
-                          className={`text-sm leading-relaxed mt-1.5 transition-colors duration-500 ${
-                            isActive
-                              ? 'text-slate-900 dark:text-slate-100 font-medium'
-                              : 'text-slate-500 dark:text-slate-400'
-                          }`}
+                          className={`text-sm leading-relaxed mt-1.5 transition-colors duration-500 ${isActive
+                            ? 'text-slate-900 dark:text-slate-100 font-medium'
+                            : 'text-slate-500 dark:text-slate-400'
+                            }`}
                         >
                           {step.desc}
                         </p>

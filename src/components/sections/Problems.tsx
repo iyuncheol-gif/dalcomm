@@ -15,7 +15,7 @@ export default function Problems() {
     {
       title: '고등 독해의 높은 벽',
       desc: '긴 지문과 추상적인 내용 앞에서 해석조차 못하고 시간 부족을 호소합니다.',
-      solution: '실전 모의고사 루틴으로 시간 관리 능력 향상',
+      solution: '단순 해석이 아닌 논리를 기르는 눈',
       icon: 'trending_up',
     },
   ];

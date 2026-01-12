@@ -145,12 +145,11 @@ export default function Hero() {
           </h1>
 
           <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300 word-keep-all lg:text-xl lg:leading-8 max-w-2xl font-medium">
-            단순 암기를 넘어선 논리적 독해와 문법 완성.
+            초등부터 고등까지
             <br className="hidden sm:block" />
             <span className="text-primary dark:text-accent font-bold">
-              달콤플러스만의 학습 시스템
+              달콤플러스 영어가 함께 하겠습니다.
             </span>
-            이 상위권으로 가는 지름길을 제시합니다.
           </p>
 
           <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 pt-4 w-full sm:w-auto">
@@ -177,17 +176,17 @@ export default function Hero() {
               {
                 title: '초등 정규반',
                 icon: 'auto_stories',
-                desc: '영어적 사고력 확장 및\n기초 문법 체계 정립',
+                desc: '교구, 원서, 학습의\n달콤영어만의 커리큘럼',
               },
               {
                 title: '중등 내신반',
                 icon: 'workspace_premium',
-                desc: '학교별 맞춤 내신 전략과\n고등 영어 선행 학습',
+                desc: '강화된 서술형 대비를\n위한 내공 다지기 훈련',
               },
               {
-                title: '고등 수능반',
+                title: '스파르타 고등부',
                 icon: 'military_tech',
-                desc: '킬러 문항 정복을 위한\n심화 독해 및 실전 훈련',
+                desc: '논리, 독해훈련으로\n내신 수능 두마리 토끼를 잡는 훈련',
               },
             ].map((box, idx) => (
               <div

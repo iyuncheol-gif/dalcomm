@@ -30,8 +30,8 @@ export default function LearningSystem() {
                 },
                 {
                   step: 3,
-                  title: 'Weekly Report',
-                  desc: '주간 학습 태도, 과제 수행도, 시험 점수를 카카오톡 발송',
+                  title: 'Feedback and Report',
+                  desc: '학습 태도, 과제 수행도, 시험 점수등을 개별피드백 발송 및 주기적 온라인 테스트 실시로 쳬계적인 분석 Report 전달',
                 },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-6">
@@ -61,7 +61,7 @@ export default function LearningSystem() {
                   </div>
                   <div>
                     <p className="font-bold text-lg text-slate-900 dark:text-white">
-                      김철수 학생 학습 리포트
+                      김철수 학생 NELT Report
                     </p>
                     <p className="text-sm text-slate-500">2023년 10월 3주차</p>
                   </div>
@@ -90,9 +90,8 @@ export default function LearningSystem() {
                     </div>
                     <div className="h-3 w-full rounded-full bg-slate-100 dark:bg-slate-700 overflow-hidden">
                       <div
-                        className={`h-3 rounded-full bg-primary ${
-                          stat.animate ? 'animate-pulse' : ''
-                        }`}
+                        className={`h-3 rounded-full bg-primary ${stat.animate ? 'animate-pulse' : ''
+                          }`}
                         style={{ width: stat.width }}
                       ></div>
                     </div>

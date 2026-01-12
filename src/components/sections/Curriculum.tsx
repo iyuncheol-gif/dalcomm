@@ -5,19 +5,19 @@ export default function Curriculum() {
       title: '초등부',
       subtitle: '영어의 즐거움과 공부 습관',
       points: [
-        { label: 'Phonics & Reading', desc: '정확한 발음과 유창한 읽기 연습' },
-        { label: 'Speaking', desc: '실생활 표현 중심의 말하기 훈련' },
-        { label: 'Vocab & Grammar', desc: '중등 대비 필수 어휘 800개 완성' },
+        { label: 'Premium 교구학습', desc: '고림동 유일, 체계적인 도구와 함께' },
+        { label: 'One-Source 원서리딩', desc: '4가지 영역을 원서 하나로!' },
+        { label: '꼼꼼한 관리', desc: '중등까지 이어지는 올바른 학습습관 기르기' },
       ],
     },
     {
       level: 'Middle School',
       title: '중등부',
-      subtitle: '내신 만점과 고등 영어 기초',
+      subtitle: '영어 내공 기르기',
       points: [
-        { label: '내신 완벽 대비', desc: '학교별 교과서/부교재 밀착 분석' },
-        { label: '서술형/문법 클리닉', desc: '감점 요인 제거 및 작문 실력 강화' },
-        { label: '수능 기초 독해', desc: '유형별 독해 스킬 습득 시작' },
+        { label: '내신 완벽 대비 어휘력 향상', desc: '꾸준한 어휘 테스트 및 관리시스템으로 어휘력 향상' },
+        { label: '중등 문법 완벽 마스터', desc: '고등영어의 초석이 되는 문법을 빈틈없이' },
+        { label: '독해력 향상', desc: '요약, 분석 등을 통한 독해력 기르기' },
       ],
     },
     {
@@ -25,9 +25,9 @@ export default function Curriculum() {
       title: '고등부',
       subtitle: '수능 1등급과 입시 성공',
       points: [
-        { label: '수능/모의고사 실전', desc: '매주 Full 모의고사 및 킬러문항 분석' },
-        { label: 'EBS 연계/비연계', desc: '수능 출제 경향 완벽 반영 학습' },
-        { label: '고난도 어법/어휘', desc: '변별력 문제 해결을 위한 심화 학습' },
+        { label: '학교별 내신 맞춤', desc: '매주 Full 모의고사 및 킬러문항 분석' },
+        { label: '수능대비 모의고사', desc: '모의고사 - 변형문제 - 변형지문 3단계 심층학습' },
+        { label: '고난도 어법/서술학습', desc: '변별력 문제 해결을 위한 심화 학습' },
       ],
     },
   ];

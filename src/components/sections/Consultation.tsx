@@ -89,7 +89,7 @@ export default function Consultation() {
                     },
                     {
                       icon: 'savings',
-                      text: '첫 달 수강료 10% 할인 혜택',
+                      text: '상담 당일 등록시 첫 달 수강료 10% 할인 혜택',
                       color: 'bg-primary',
                     },
                     {
