@@ -86,7 +86,7 @@ export default function PreviewSection() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[200px]">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[250px] md:auto-rows-[200px]">
           {galleryItems.map((item, index) => (
             <motion.div
               key={item.id}
@@ -97,7 +97,7 @@ export default function PreviewSection() {
               transition={{ delay: (index % 5) * 0.1 }}
               className={`relative group rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer ${getItemSize(
                 index
-              )} bg-slate-200 min-h-[250px] md:min-h-0`}
+              )} bg-slate-200`}
             >
               <Image
                 src={getImagePath(`/${item.image}`)}

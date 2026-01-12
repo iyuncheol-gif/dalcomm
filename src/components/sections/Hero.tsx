@@ -146,7 +146,7 @@ export default function Hero() {
 
           <p className="text-lg leading-relaxed text-slate-700 dark:text-slate-300 word-keep-all lg:text-xl lg:leading-8 max-w-2xl font-medium">
             초등부터 고등까지
-            <br className="hidden sm:block" />
+            <br />
             <span className="text-primary dark:text-accent font-bold">
               달콤플러스 영어가 함께 하겠습니다.
             </span>
@@ -193,7 +193,7 @@ export default function Hero() {
                 key={idx}
                 className="group relative flex cursor-pointer flex-col gap-3 rounded-2xl p-7 transition-all duration-300 text-center md:text-left border border-transparent bg-white hover:bg-primary/5 hover:border-primary/10 dark:bg-background-dark/50 dark:hover:bg-primary/10 shadow-sm hover:shadow-md"
               >
-                <div className="flex items-center justify-center md:justify-between mb-1">
+                <div className="flex items-center justify-center md:justify-between mb-1 gap-2">
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-primary dark:group-hover:text-accent transition-colors">
                     {box.title}
                   </h3>

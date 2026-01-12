@@ -37,7 +37,7 @@ export default function WhySection() {
             </h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed word-keep-all max-w-2xl mx-auto">
               달콤플러스 영어는 단순한 강의 전달을 넘어
-              <br className="hidden sm:block" />
+              <br />
               학생의 학습 메커니즘을 근본적으로 변화시킵니다.
             </p>
           </div>
