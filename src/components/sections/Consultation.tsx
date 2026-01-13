@@ -109,7 +109,7 @@ export default function Consultation() {
                           {item.icon}
                         </span>
                       </div>
-                      <span className="font-semibold text-[15px]">{item.text}</span>
+                      <span className={`font-semibold text-[15px] ${i === 0 ? 'whitespace-nowrap' : ''}`}>{item.text}</span>
                     </div>
                   ))}
                 </div>
