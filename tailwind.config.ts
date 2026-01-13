@@ -21,6 +21,7 @@ const config: Config = {
         sans: ['var(--font-pretendard)', 'Pretendard', 'sans-serif'],
         display: ['var(--font-pretendard)', 'Pretendard', 'sans-serif'],
         body: ['var(--font-pretendard)', 'Pretendard', 'sans-serif'],
+        serif: ['var(--font-playfair)', 'serif'],
         footer: ['var(--font-noto-sans-kr)', 'Noto Sans KR', 'sans-serif'],
       },
       borderRadius: {

@@ -1,61 +1,53 @@
 "use client";
 
 import Image from "next/image";
-import { handleScrollClick } from "@/lib/scroll";
 import { getImagePath } from "@/lib/utils";
 
 export default function Teachers() {
   return (
     <section
-      className="py-20 bg-background-light dark:bg-background-dark flex flex-col items-center justify-center px-4"
+      className="flex flex-col items-center justify-center px-6 py-12 lg:py-24 w-full bg-[#f6f6f8] dark:bg-background-dark"
       id="teachers"
     >
-      <div className="w-full max-w-[1120px] min-h-[600px] relative rounded-[28px] overflow-hidden shadow-2xl isolate group bg-[#1a4332]">
-        <div className="absolute inset-y-0 left-0 w-full lg:w-[55%] z-[-2]">
-          <Image
-            src={getImagePath("/teachers.png")}
-            alt="Director Kim Seul-gi"
-            fill
-            className="object-contain object-center transition-transform duration-1000 group-hover:scale-105"
-            priority
-          />
-        </div>
-        <div className="absolute inset-0 z-[-1] bg-gradient-to-t lg:bg-gradient-to-r from-black/80 via-black/40 to-transparent lg:from-transparent lg:via-[#0f172a]/60 lg:to-[#0f172a]"></div>
+      <div className="w-full max-w-[1120px] bg-white rounded-[28px] shadow-[0_20px_40px_-5px_rgba(0,0,0,0.05),0_8px_10px_-6px_rgba(0,0,0,0.01)] p-8 md:p-14 lg:p-20 relative overflow-hidden group">
+        {/* Background Decoration */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-b from-gray-50 to-transparent rounded-full -mr-32 -mt-32 pointer-events-none opacity-60"></div>
 
-        <div className="w-full h-full flex flex-col lg:flex-row min-h-[600px]">
-          <div className="hidden lg:block lg:w-[45%]"></div>
-          <div className="w-full lg:w-[55%] flex-1 flex flex-col justify-between p-8 md:p-12 lg:p-16 text-left relative z-10 self-stretch">
-            <div>
-              <div className="mb-6 animate-fade-in-up">
-                <p className="text-white/70 text-xs font-bold tracking-[0.15em] uppercase mb-3 drop-shadow-md">
-                  Director Profile
-                </p>
-                <div className="flex flex-wrap items-center gap-4 mb-3">
-                  <h1 className="text-white text-4xl lg:text-5xl font-bold tracking-tight drop-shadow-lg">
-                    김슬기
-                  </h1>
-                  <div className="px-3 py-1 bg-white/10 backdrop-blur-md rounded-full border border-white/20 shadow-sm">
-                    <span className="text-white text-sm font-bold tracking-wide">
-                      Elly
-                    </span>
-                  </div>
+        <div className="flex flex-col md:flex-row gap-12 lg:gap-24 items-center md:items-start relative z-10">
+          {/* Image Section */}
+          <div className="flex-shrink-0 w-full md:w-[320px] lg:w-[380px]">
+            <div className="aspect-[3/4] w-full rounded-[20px] overflow-hidden shadow-lg relative group-hover:shadow-xl transition-all duration-500 ease-out ring-1 ring-black/5">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none z-10"></div>
+              <Image
+                src={getImagePath("/elly.png")}
+                alt="Director Kim Seul-gi"
+                fill
+                className="object-cover object-top transform transition-transform duration-700 hover:scale-105"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                priority
+              />
+            </div>
+          </div>
+
+          {/* Text Content */}
+          <div className="flex flex-col flex-1 w-full text-left justify-center md:pt-6">
+            <div className="mb-10">
+              <p className="text-[#9aa2b1] text-xs font-bold tracking-[0.25em] uppercase mb-5 pl-0.5">Director</p>
+              <div className="flex flex-wrap items-baseline gap-6 mb-4">
+                <h1 className="text-[#111318] text-[44px] md:text-[56px] font-bold tracking-tight leading-none font-display">김슬기</h1>
+                <div className="flex items-center">
+                  <span className="font-serif text-3xl italic text-[#9aa2b1] font-normal tracking-wide">Elly</span>
                 </div>
-                <p className="text-emerald-100 text-xl font-medium drop-shadow-md">
-                  원장 · 학습 설계 & 1:1 코칭
-                </p>
               </div>
-
-              <div className="w-16 h-1 bg-white/30 rounded-full mb-8 backdrop-blur-sm"></div>
+              <p className="text-[#616f89] text-[19px] font-medium leading-relaxed tracking-tight mt-2">원장 · 학습 설계 & 1:1 코칭</p>
             </div>
 
-            <div className="max-w-xl">
-              <p className="text-gray-300 text-lg leading-[1.7] font-light tracking-wide drop-shadow-md">
-                <span className="font-bold text-white block mb-2 text-xl">
-                  "진정한 성장은 올바른 습관에서 시작됩니다."
-                </span>
-                데이터에 기반한 정확한 진단과 체계적인 학습 루틴을 통해, 단순한
-                노력이 아닌 눈에 보이는 결과로 만들어드립니다. 당신의 가능성을
-                현실로 바꾸는 여정을 함께하겠습니다.
+            <div className="w-16 h-[1px] bg-gray-200 mb-10"></div>
+
+            <div className="max-w-2xl">
+              <p className="text-[#2c323d] text-[17px] md:text-[18px] leading-[1.85] font-normal tracking-[-0.01em] whitespace-pre-line text-justify md:text-left">
+                영어는 <span className="font-bold text-[#111318]">‘감’</span>이 아니라 <span className="font-bold text-[#111318]">‘근거’</span>로 성장합니다.{'\n'}
+                막연한 느낌으로 푸는 문제는 실력이 아닙니다. 정확한 데이터와 논리적인 분석을 통해 자신의 약점을 파악하고, 체계적인 훈련으로 극복하는 과정만이 진짜 실력을 만듭니다. 학생 한 명 한 명의 성향과 속도에 맞춘 깊이 있는 학습 설계로, 흔들리지 않는 영어 자신감을 심어드리겠습니다.
               </p>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Noto_Sans_KR } from 'next/font/google';
+import { Noto_Sans_KR, Playfair_Display } from 'next/font/google';
 import './globals.css';
 import JsonLd from '@/components/seo/JsonLd';
 
@@ -7,6 +7,12 @@ const notoSansKr = Noto_Sans_KR({
   subsets: ['latin'],
   weight: ['100', '300', '400', '500', '700', '900'],
   display: 'swap',
+});
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-playfair',
 });
 
 export const metadata: Metadata = {
@@ -55,11 +61,17 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
           rel="stylesheet"
         />
+        <link
+          as="style"
+          crossOrigin=""
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css"
+          rel="stylesheet"
+        />
       </head>
-      <body className={`${notoSansKr.className} bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden`}>
+      <body className={`${notoSansKr.className} ${playfair.variable} bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden`}>
         <JsonLd />
         {children}
       </body>
-    </html>
+    </html >
   );
 }

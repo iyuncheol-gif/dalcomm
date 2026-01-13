@@ -191,10 +191,7 @@ export default function Footer() {
                   <span className="font-bold text-slate-400">대표</span>
                   <span>{BUSINESS_INFO.REPRESENTATIVE}</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="font-bold text-slate-400">등록번호</span>
-                  <span>{BUSINESS_INFO.REGISTRATION}</span>
-                </div>
+
                 <div className="flex items-start gap-2">
                   <span className="font-bold text-slate-400 shrink-0">주소</span>
                   <span className="tracking-tight break-keep">
