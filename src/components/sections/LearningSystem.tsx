@@ -31,7 +31,7 @@ export default function LearningSystem() {
                 {
                   step: 3,
                   title: 'Feedback and Report',
-                  desc: '학습 태도, 과제 수행도, 시험 점수등을 개별피드백 발송 및 주기적 온라인 테스트 실시로 쳬계적인 분석 Report 전달',
+                  desc: '학습 태도, 과제 수행도, 시험 점수등을 개별피드백 발송 및 주기적 온라인 테스트 실시로 체계적인 분석 Report 전달',
                 },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-6">
