@@ -28,7 +28,7 @@ export default function WhySection() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
             <span className="text-accent font-bold tracking-widest text-sm uppercase mb-3 block">
-              Why DALKOM PLUS?
+              Why DALCOM PLUS?
             </span>
             <h2 className="text-3xl font-black text-slate-900 dark:text-white sm:text-5xl leading-tight word-keep-all mb-6">
               검증된 커리큘럼
