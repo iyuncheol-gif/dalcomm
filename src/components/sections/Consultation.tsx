@@ -137,7 +137,7 @@ export default function Consultation() {
                   ].map((item, i) => (
                     <div
                       key={i}
-                      className="flex items-center gap-4 bg-white/5 rounded-2xl p-4 border border-white/5 backdrop-blur-sm hover:bg-white/10 transition-colors"
+                      className="flex items-center gap-4 bg-white/5 rounded-2xl p-6 lg:p-4 border border-white/5 backdrop-blur-sm hover:bg-white/10 transition-colors"
                     >
                       <div
                         className={`h-10 w-10 rounded-xl ${item.color} flex items-center justify-center flex-shrink-0 shadow-lg`}
