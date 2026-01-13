@@ -12,7 +12,7 @@ export const scrollToElement = (id: string, offset = 100) => {
 };
 
 export const handleScrollClick = (
-  e: React.MouseEvent<HTMLAnchorElement>,
+  e: React.MouseEvent,
   id: string,
   offset = 100,
   callback?: () => void

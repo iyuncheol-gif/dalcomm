@@ -6,6 +6,8 @@ import { CONTACT } from '@/constants';
 
 export default function Consultation() {
   const PHONE_REGEX = /^010-?([0-9]{3,4})-?([0-9]{4})$/;
+  const NAME_REGEX = /^[가-힣]{2,5}|[a-zA-Z]{2,20}$/; // 한글 2~5자 또는 영문 2~20자
+  const NAME_INCOMPLETE_REGEX = /([ㄱ-ㅎㅏ-ㅣ]+)/; // 자음/모음 단독 확인
 
   const [formData, setFormData] = useState({
     name: '',
@@ -22,6 +24,8 @@ export default function Consultation() {
     privacy: false,
   });
 
+  const [nameErrorMsg, setNameErrorMsg] = useState('');
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -31,6 +35,41 @@ export default function Consultation() {
     if (formData.school === '중학교' || formData.school === '고등학교')
       return ['1학년', '2학년', '3학년'];
     return [];
+  };
+
+  const validateName = (name: string) => {
+    if (!name.trim()) return '이름을 입력하세요.';
+    if (NAME_INCOMPLETE_REGEX.test(name)) return '올바른 이름을 입력해주세요. (자음/모음 단독 불가)';
+    // 특수문자나 숫자 포함 여부는 아래 로직으로 간접 체크 가능하지만 명시적으로 추가 가능
+    // 여기서는 간단히 한글/영문 완성형 체크
+    if (!/^[가-힣a-zA-Z\s]+$/.test(name)) return '이름에는 특수문자나 숫자를 사용할 수 없습니다.';
+    if (name.replace(/\s/g, '').length < 2) return '이름은 2글자 이상이어야 합니다.';
+    return '';
+  };
+
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setFormData({ ...formData, name: value });
+
+    // 입력 중 에러 초기화 (UX 선택사항)
+    if (errors.name) {
+      const msg = validateName(value);
+      if (!msg) {
+        setErrors(prev => ({ ...prev, name: false }));
+        setNameErrorMsg('');
+      }
+    }
+  };
+
+  const handleNameBlur = () => {
+    const msg = validateName(formData.name);
+    if (msg) {
+      setErrors(prev => ({ ...prev, name: true }));
+      setNameErrorMsg(msg);
+    } else {
+      setErrors(prev => ({ ...prev, name: false }));
+      setNameErrorMsg('');
+    }
   };
 
   const handlePhoneBlur = () => {
@@ -43,8 +82,10 @@ export default function Consultation() {
     e.preventDefault();
 
     // Sequential validation
-    if (!formData.name.trim()) {
+    const nameValidationMsg = validateName(formData.name);
+    if (nameValidationMsg) {
       setErrors({ name: true, phone: false, privacy: false });
+      setNameErrorMsg(nameValidationMsg);
       return;
     }
     if (!formData.phone.trim() || !PHONE_REGEX.test(formData.phone)) {
@@ -86,6 +127,7 @@ export default function Consultation() {
         inquiry: '',
         privacy: false,
       });
+      setNameErrorMsg('');
     } catch (error) {
       console.error('EmailJS Error:', error);
       alert('상담 신청 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
@@ -220,14 +262,12 @@ export default function Consultation() {
                         placeholder="예: 홍길동"
                         type="text"
                         value={formData.name}
-                        onChange={(e) => {
-                          setFormData({ ...formData, name: e.target.value });
-                          if (errors.name) setErrors((prev) => ({ ...prev, name: false }));
-                        }}
+                        onChange={handleNameChange}
+                        onBlur={handleNameBlur}
                       />
                       {errors.name && (
                         <p className="text-sm text-red-500 mt-1">
-                          이름을 입력하세요.
+                          {nameErrorMsg || '이름을 입력하세요.'}
                         </p>
                       )}
                     </div>
