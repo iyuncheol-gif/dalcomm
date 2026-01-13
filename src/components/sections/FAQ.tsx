@@ -10,7 +10,19 @@ export default function FAQ() {
     },
     {
       q: '결석 시 보강이 가능한가요?',
-      a: '네, 사전에 연락 주신 결석에 한하여 1:1 보강 또는 동영상 강의를 통해 진도 공백이 없도록 관리해 드립니다.',
+      a: `- 보강이 가능한 경우
+
+1) 독감, 코로나 등 전염성 질병으로 인해 등교가 중지되거나 입원이 필요한 경우
+
+2) 장례식 등 불가피한 경조사로 참석이 어려운 경우
+
+- 보강이 어려운 경우
+
+1) 일반 질병 결석(단발성 컨디션 저하, 갑작스러운 감기 기운, 복통 등)
+
+2) 개인 사유 결석(단기/장기 여행 등 여행 관련 사유는 보강 및 차감이 어렵습니다)
+
+3) 학교 행사 및 가족 행사 등 일정으로 인한 결석`,
     },
     {
       q: '내신 대비 기간에는 어떻게 수업하나요?',
@@ -36,7 +48,7 @@ export default function FAQ() {
                   <span className="material-symbols-outlined">expand_more</span>
                 </span>
               </summary>
-              <p className="mt-4 text-slate-600 dark:text-slate-400 leading-relaxed pl-1 word-keep-all">
+              <p className="mt-4 text-slate-600 dark:text-slate-400 leading-relaxed pl-1 word-keep-all whitespace-pre-line">
                 {faq.a}
               </p>
             </details>
