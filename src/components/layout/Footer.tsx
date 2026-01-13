@@ -195,9 +195,9 @@ export default function Footer() {
                   <span className="font-bold text-slate-400">등록번호</span>
                   <span>{BUSINESS_INFO.REGISTRATION}</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="font-bold text-slate-400">주소</span>
-                  <span>
+                <div className="flex items-start gap-2">
+                  <span className="font-bold text-slate-400 shrink-0">주소</span>
+                  <span className="tracking-tight break-keep">
                     {CONTACT.ADDRESS}, {CONTACT.ADDRESS_DETAIL}
                   </span>
                 </div>
