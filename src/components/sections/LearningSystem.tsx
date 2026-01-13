@@ -61,12 +61,13 @@ export default function LearningSystem() {
                   </div>
                   <div>
                     <p className="font-bold text-lg text-slate-900 dark:text-white">
-                      김철수 학생 NELT Report
+                      김철수 학생 <br className="sm:hidden" />
+                      NELT Report
                     </p>
                     <p className="text-sm text-slate-500">2023년 10월 3주차</p>
                   </div>
                 </div>
-                <span className="rounded-full bg-green-100 px-4 py-1.5 text-xs font-bold text-green-700 tracking-wide">
+                <span className="rounded-full bg-green-100 px-4 py-1.5 text-xs font-bold text-green-700 tracking-wide whitespace-nowrap">
                   양호
                 </span>
               </div>
