@@ -1,6 +1,6 @@
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import MobileCTA from '@/components/layout/MobileCTA';
+
 import Hero from '@/components/sections/Hero';
 import Problems from '@/components/sections/Problems';
 import WhySection from '@/components/sections/WhySection';
@@ -33,7 +33,7 @@ export default function Home() {
         <FAQ />
       </main>
       <Footer />
-      <MobileCTA />
+
     </div>
   );
 }

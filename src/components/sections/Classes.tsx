@@ -65,7 +65,7 @@ export default function Classes() {
                 },
                 {
                   title: '고등부',
-                  tags: '주2회+주밀특강',
+                  tags: '주2회+주말특강',
                   desc: '평소에 모의고사 분석을 통해 실력을 쌓고, 시험기간에는, 학교별 기출 분석과 예상 문제 풀이로 내신을 완벽 대비합니다.',
                   icon: 'event_note',
                 },
@@ -81,7 +81,7 @@ export default function Classes() {
                       </span>{' '}
                       {item.title}
                     </span>
-                    <span className="text-xs font-normal text-slate-500 bg-white px-2 py-1 rounded border border-slate-100 dark:bg-slate-700 dark:border-slate-600">
+                    <span className="text-xs font-bold text-white bg-primary/80 px-3 py-1 rounded-full shadow-sm dark:bg-accent dark:text-slate-900">
                       {item.tags}
                     </span>
                   </h4>

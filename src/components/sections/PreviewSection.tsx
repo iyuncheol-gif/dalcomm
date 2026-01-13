@@ -23,7 +23,7 @@ export default function PreviewSection() {
     {
       id: 3,
       title: '도서관',
-      desc: '원서가 비치된 프리미엄 영어 도서관',
+      desc: '원서가 비치된 조용한 영어 도서관',
       image: '3.jpeg',
       icon: 'meeting_room',
     },
