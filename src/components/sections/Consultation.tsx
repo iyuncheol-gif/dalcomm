@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { CONTACT } from '@/constants';
 
 export default function Consultation() {
@@ -21,6 +22,8 @@ export default function Consultation() {
     privacy: false,
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const getGradeOptions = () => {
     if (formData.school === '초등학교')
       return ['1학년', '2학년', '3학년', '4학년', '5학년', '6학년'];
@@ -35,7 +38,7 @@ export default function Consultation() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Sequential validation
@@ -53,7 +56,41 @@ export default function Consultation() {
     }
 
     setErrors({ name: false, phone: false, privacy: false });
-    alert(`${formData.name}님의 상담 신청이 완료되었습니다. 곧 연락드리겠습니다!`);
+    setIsSubmitting(true);
+
+    const templateParams = {
+      student_name: formData.name,
+      school: formData.school === '선택해주세요' ? '미선택' : formData.school,
+      grade: formData.grade === '선택해주세요' ? '미선택' : formData.grade,
+      parent_phone: formData.phone,
+      inquiry: formData.inquiry || '문의 내용 없음',
+    };
+
+    try {
+      await emailjs.send(
+        'service_3xmjzks',
+        'template_aiilnmo',
+        templateParams,
+        '-Yr7wpIq6nYSG3yos'
+      );
+
+      alert(`${formData.name}님의 상담 신청이 완료되었습니다. 곧 연락드리겠습니다!`);
+
+      // 폼 초기화
+      setFormData({
+        name: '',
+        school: '선택해주세요',
+        grade: '선택해주세요',
+        phone: '',
+        inquiry: '',
+        privacy: false,
+      });
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      alert('상담 신청 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -336,13 +373,26 @@ export default function Consultation() {
 
                 <div className="pt-2">
                   <button
-                    className="w-full flex justify-center items-center gap-3 rounded-2xl bg-[#1a4332] py-5 px-6 text-xl font-bold text-white shadow-xl shadow-primary/20 hover:bg-[#123024] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all transform active:scale-[0.98] group"
+                    className="w-full flex justify-center items-center gap-3 rounded-2xl bg-[#1a4332] py-5 px-6 text-xl font-bold text-white shadow-xl shadow-primary/20 hover:bg-[#123024] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all transform active:scale-[0.98] group disabled:opacity-50 disabled:cursor-not-allowed"
                     type="submit"
+                    disabled={isSubmitting}
                   >
-                    무료 상담 신청하기
-                    <span className="material-symbols-outlined text-2xl group-hover:translate-x-1 transition-transform">
-                      arrow_forward
-                    </span>
+                    {isSubmitting ? (
+                      <>
+                        <svg className="animate-spin h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        전송 중...
+                      </>
+                    ) : (
+                      <>
+                        무료 상담 신청하기
+                        <span className="material-symbols-outlined text-2xl group-hover:translate-x-1 transition-transform">
+                          arrow_forward
+                        </span>
+                      </>
+                    )}
                   </button>
                   <p className="mt-4 text-center text-[13px] text-slate-400 font-medium">
                     신청 후 24시간 이내에 원장 선생님이 연락드립니다.
