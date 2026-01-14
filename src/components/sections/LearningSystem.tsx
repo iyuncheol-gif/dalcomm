@@ -61,10 +61,10 @@ export default function LearningSystem() {
                   </div>
                   <div>
                     <p className="font-bold text-lg text-slate-900 dark:text-white">
-                      김철수 학생 <br className="sm:hidden" />
+                      김달콤 학생 <br className="sm:hidden" />
                       NELT Report
                     </p>
-                    <p className="text-sm text-slate-500">2023년 10월 3주차</p>
+                    <p className="text-sm text-slate-500">2025년 10월 3주차</p>
                   </div>
                 </div>
                 <span className="rounded-full bg-green-100 px-4 py-1.5 text-xs font-bold text-green-700 tracking-wide whitespace-nowrap">
@@ -100,7 +100,7 @@ export default function LearningSystem() {
                 ))}
               </div>
               <div className="mt-8 rounded-xl bg-blue-50/80 p-5 text-sm text-blue-900 dark:bg-blue-900/30 dark:text-blue-200 leading-relaxed border border-blue-100 dark:border-blue-800">
-                <strong>👨‍🏫 선생님 코멘트:</strong> 철수는 이번 주 단어 암기가 매우
+                <strong>👨‍🏫 선생님 코멘트:</strong> 김달콤 학생은 이번 주 단어 암기가 매우
                 우수합니다. 관계대명사 파트에서 실수가 있었으나 1:1 클리닉을 통해
                 보완했습니다. 다음 주엔 독해 속도에 집중할 예정입니다.
               </div>

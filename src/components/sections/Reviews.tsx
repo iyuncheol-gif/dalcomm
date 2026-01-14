@@ -72,7 +72,7 @@ export default function Reviews() {
                   <span className="material-symbols-outlined text-lg">school</span>
                 </div>
                 <span className="font-bold text-slate-800 text-sm dark:text-white">
-                  고1 김OO 학생
+                  고2 이O은 학생
                 </span>
               </div>
               <span className="px-2.5 py-1 rounded-full bg-white border border-slate-200 text-xs font-bold text-slate-500 shadow-sm dark:bg-slate-700 dark:border-slate-600 dark:text-slate-300">
