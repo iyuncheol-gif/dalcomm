@@ -139,7 +139,7 @@ function PrivacyPolicyContent() {
           위하여 아래와 같이 관련 부서 및 개인정보 보호책임자를 지정하고 있습니다.
         </p>
         <ul className="list-disc pl-5 mt-1">
-          <li>개인정보 보호책임자: [원장님 또는 관리자 성함]</li>
+          <li>개인정보 보호책임자: 김슬기</li>
           <li>전화번호: 0507-1338-8444</li>
           <li>이메일: goodchef@naver.com</li>
         </ul>
