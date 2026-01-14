@@ -230,10 +230,10 @@ export default function Consultation() {
             {/* Right Column: Form */}
             <div
               ref={containerRef}
-              className="p-10 lg:w-3/5 lg:p-14 bg-white dark:bg-slate-900 min-h-[600px] flex flex-col justify-center scroll-mt-32"
+              className={`p-10 lg:w-3/5 lg:p-14 bg-white dark:bg-slate-900 flex flex-col justify-center scroll-mt-32 transition-all ${isSuccess ? 'min-h-[400px]' : 'min-h-[600px]'}`}
             >
               {isSuccess ? (
-                <div className="flex flex-col items-center justify-center text-center py-12 animate-in fade-in zoom-in duration-500">
+                <div className="flex flex-col items-center justify-center text-center py-12 animate-fade-in-up">
                   <div className="w-24 h-24 bg-green-50 dark:bg-green-900/20 rounded-full flex items-center justify-center mb-8">
                     <span className="material-symbols-outlined text-5xl text-green-600 dark:text-green-400">
                       check_circle
