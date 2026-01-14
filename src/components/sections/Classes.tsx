@@ -60,7 +60,7 @@ export default function Classes() {
                 {
                   title: '초고학년 ~ 중등부',
                   tags: '주 3회',
-                  desc: '각 혁년 및 레벨에 맞는 맞춤형 커리큘럼을 제공합니다.',
+                  desc: '각 학년 및 레벨에 맞는 맞춤형 커리큘럼을 제공합니다.',
                   icon: 'person',
                 },
                 {
