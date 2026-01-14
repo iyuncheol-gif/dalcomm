@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import { CONTACT } from '@/constants';
 
@@ -136,6 +136,14 @@ export default function Consultation() {
     }
   };
 
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isSuccess && containerRef.current) {
+      containerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [isSuccess]);
+
   return (
     <section className="py-24 bg-background-light dark:bg-background-dark" id="consultation">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -220,7 +228,10 @@ export default function Consultation() {
             </div>
 
             {/* Right Column: Form */}
-            <div className="p-10 lg:w-3/5 lg:p-14 bg-white dark:bg-slate-900 min-h-[600px] flex flex-col justify-center">
+            <div
+              ref={containerRef}
+              className="p-10 lg:w-3/5 lg:p-14 bg-white dark:bg-slate-900 min-h-[600px] flex flex-col justify-center scroll-mt-32"
+            >
               {isSuccess ? (
                 <div className="flex flex-col items-center justify-center text-center py-12 animate-in fade-in zoom-in duration-500">
                   <div className="w-24 h-24 bg-green-50 dark:bg-green-900/20 rounded-full flex items-center justify-center mb-8">
