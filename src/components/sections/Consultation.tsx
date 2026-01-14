@@ -5,7 +5,7 @@ import emailjs from '@emailjs/browser';
 import { CONTACT } from '@/constants';
 
 export default function Consultation() {
-  const PHONE_REGEX = /^010-?([0-9]{3,4})-?([0-9]{4})$/;
+  const PHONE_REGEX = /^010-?([0-9]{4})-?([0-9]{4})$/;
   const NAME_REGEX = /^[가-힣]{2,5}|[a-zA-Z]{2,20}$/; // 한글 2~5자 또는 영문 2~20자
   const NAME_INCOMPLETE_REGEX = /([ㄱ-ㅎㅏ-ㅣ]+)/; // 자음/모음 단독 확인
 
