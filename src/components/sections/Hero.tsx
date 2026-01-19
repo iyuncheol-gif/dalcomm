@@ -52,8 +52,7 @@ export default function Hero() {
         {/* Scattered Text Animation */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
           <div
-            className="w-full flex justify-between px-4 font-black text-slate-900 dark:text-white whitespace-nowrap select-none"
-            style={{ fontSize: '6.5vw' }}
+            className="w-full flex justify-between px-4 font-black text-slate-900 dark:text-white whitespace-nowrap select-none text-[10vw] md:text-[6.5vw]"
           >
             {isClient && letterInitials.length > 0 &&
               letters.map((char, i) => (
@@ -70,7 +69,7 @@ export default function Hero() {
                       ? {
                         x: 0,
                         y: 0,
-                        opacity: 0.05,
+                        opacity: 0.15,
                         rotate: 0,
                       }
                       : {
