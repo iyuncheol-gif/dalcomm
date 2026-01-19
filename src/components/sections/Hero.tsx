@@ -44,7 +44,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden py-20 lg:py-32 bg-white dark:bg-background-dark">
+    <section className="relative overflow-hidden pt-10 pb-20 lg:py-32 bg-white dark:bg-background-dark">
       <div className="absolute inset-0 w-full h-full bg-[#fdfdfd] dark:bg-background-dark overflow-hidden">
         <div className="absolute -top-[20%] left-[10%] w-[50vw] h-[50vw] bg-primary/5 rounded-full blur-[100px] mix-blend-multiply dark:bg-primary/10 dark:mix-blend-screen opacity-70"></div>
         <div className="absolute top-[10%] right-[10%] w-[40vw] h-[40vw] bg-accent/10 rounded-full blur-[80px] mix-blend-multiply dark:bg-accent/5 dark:mix-blend-screen opacity-60"></div>
