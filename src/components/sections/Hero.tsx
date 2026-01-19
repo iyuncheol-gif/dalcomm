@@ -50,7 +50,7 @@ export default function Hero() {
         <div className="absolute top-[10%] right-[10%] w-[40vw] h-[40vw] bg-accent/10 rounded-full blur-[80px] mix-blend-multiply dark:bg-accent/5 dark:mix-blend-screen opacity-60"></div>
 
         {/* Scattered Text Animation */}
-        <div className="absolute inset-0 flex items-start pt-[420px] md:items-center md:pt-0 justify-center pointer-events-none z-0 overflow-hidden">
+        <div className="absolute w-full top-[520px] md:inset-0 md:top-0 flex justify-center md:items-center pointer-events-none z-0 overflow-hidden">
           <div
             className="w-full flex justify-between px-4 font-black text-slate-900 dark:text-white whitespace-nowrap select-none text-[10vw] md:text-[6.5vw]"
           >
