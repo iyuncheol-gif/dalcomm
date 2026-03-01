@@ -108,6 +108,19 @@ export default function Footer() {
                       {CONTACT.PHONE}
                     </a>
                   </li>
+                  <li className="flex items-center gap-2.5">
+                    <span className="material-symbols-outlined text-accent text-[16px]">
+                      chat_bubble
+                    </span>
+                    <a
+                      href={CONTACT.KAKAO_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white text-xl font-bold hover:text-accent transition-colors"
+                    >
+                      카카오톡 문의
+                    </a>
+                  </li>
                   <li className="flex items-start gap-2.5">
                     <span className="material-symbols-outlined text-accent text-[18px]">
                       schedule

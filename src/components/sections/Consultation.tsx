@@ -223,6 +223,17 @@ export default function Consultation() {
                     </span>{' '}
                     이메일: {CONTACT.EMAIL}
                   </a>
+                  <a
+                    href={CONTACT.KAKAO_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 font-medium hover:text-white transition-colors"
+                  >
+                    <span className="material-symbols-outlined text-primary-light text-[14px] text-accent">
+                      chat_bubble
+                    </span>{' '}
+                    카카오톡 문의
+                  </a>
                 </div>
               </div>
             </div>
