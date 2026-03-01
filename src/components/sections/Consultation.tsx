@@ -204,7 +204,7 @@ export default function Consultation() {
               </div>
 
               <div className="mt-16 text-sm text-slate-400 relative z-10 pt-8 border-t border-white/10">
-                <div className="flex flex-wrap gap-x-6 gap-y-3">
+                <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
                   <a
                     href={`tel:${CONTACT.PHONE}`}
                     className="flex items-center gap-2 font-medium hover:text-white transition-colors"
@@ -214,15 +214,7 @@ export default function Consultation() {
                     </span>{' '}
                     문의: {CONTACT.PHONE}
                   </a>
-                  <a
-                    href={`mailto:${CONTACT.EMAIL}`}
-                    className="flex items-center gap-2 font-medium hover:text-white transition-colors"
-                  >
-                    <span className="material-symbols-outlined text-primary-light text-base text-accent">
-                      mail
-                    </span>{' '}
-                    이메일: {CONTACT.EMAIL}
-                  </a>
+                  <span className="text-white/20 hidden sm:block">|</span>
                   <a
                     href={CONTACT.KAKAO_URL}
                     target="_blank"
