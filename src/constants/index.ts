@@ -9,7 +9,7 @@ export const CONTACT = {
 } as const;
 
 export const BUSINESS_INFO = {
-  NAME: '달콤플러스 어학원',
+  NAME: '달콤플러스 영어학원',
   REPRESENTATIVE: '김슬기',
   REGISTRATION: '',
 } as const;
