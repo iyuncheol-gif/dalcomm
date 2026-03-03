@@ -8,25 +8,25 @@ export default function Consultation() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-6 lg:gap-8 min-h-[400px]">
           {/* Main Introduction - Full Width Row */}
-          <div className="bg-[#0f291e] p-8 lg:p-12 text-white rounded-[2rem] flex flex-col md:flex-row relative overflow-hidden shadow-2xl border border-primary/20 items-center justify-between gap-8 flex-1">
-            <div className="absolute top-0 right-0 -mr-16 -mt-16 h-64 w-64 rounded-full bg-primary opacity-20 blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 -ml-16 -mb-16 h-48 w-48 rounded-full bg-accent opacity-10 blur-3xl"></div>
+          <div className="bg-[#0f291e] p-5 lg:p-6 text-white rounded-[2rem] flex flex-col md:flex-row relative overflow-hidden shadow-2xl border border-primary/20 items-center justify-between gap-5 flex-1">
+            <div className="absolute top-0 right-0 -mr-16 -mt-16 h-48 w-48 rounded-full bg-primary opacity-20 blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 -ml-16 -mb-16 h-32 w-32 rounded-full bg-accent opacity-10 blur-3xl"></div>
 
             <div className="relative z-10 flex-1 w-full text-center md:text-left">
-              <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-accent text-xs font-bold tracking-widest uppercase mb-6 border border-white/10">
+              <span className="inline-block px-2.5 py-0.5 rounded-full bg-white/10 text-accent text-[9px] font-bold tracking-widest uppercase mb-3 border border-white/10">
                 Free Level Test
               </span>
-              <h2 className="text-4xl lg:text-5xl font-black leading-tight mb-6 word-keep-all">
+              <h2 className="text-xl lg:text-2xl font-black leading-tight mb-3 word-keep-all">
                 지금 무료 레벨테스트를
                 <br className="hidden md:block" /> 신청하세요!
               </h2>
-              <p className="text-lg lg:text-xl text-slate-300 leading-relaxed word-keep-all opacity-90 max-w-xl mx-auto md:mx-0">
-                하루 10분 투자로 자녀의 정확한 영어 실력을 확인하고, 맞춤형 학습
+              <p className="text-xs lg:text-sm text-slate-300 leading-relaxed word-keep-all opacity-80 max-w-xl mx-auto md:mx-0">
+                정확한 영어 실력을 확인하고, 맞춤형 학습
                 로드맵을 받아보세요.
               </p>
             </div>
 
-            <div className="relative z-10 flex-1 w-full space-y-4 max-w-xl">
+            <div className="relative z-10 flex-1 w-full space-y-2 max-w-lg">
               {[
                 {
                   icon: 'analytics',
@@ -35,7 +35,7 @@ export default function Consultation() {
                 },
                 {
                   icon: 'savings',
-                  text: '상담 당일 등록시 첫 달 수강료 10% 할인 혜택',
+                  text: '상담 당일 등록시 수강료 10% 할인',
                   color: 'bg-primary',
                 },
                 {
@@ -46,16 +46,16 @@ export default function Consultation() {
               ].map((item, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-5 bg-white/5 rounded-2xl p-6 border border-white/5 backdrop-blur-sm hover:bg-white/10 transition-colors"
+                  className="flex items-center gap-3 bg-white/5 rounded-lg p-2.5 lg:p-3 border border-white/5 backdrop-blur-sm hover:bg-white/10 transition-colors"
                 >
                   <div
-                    className={`h-12 w-12 rounded-xl ${item.color} flex items-center justify-center flex-shrink-0 shadow-lg`}
+                    className={`h-8 w-8 rounded-md ${item.color} flex items-center justify-center flex-shrink-0 shadow-lg`}
                   >
-                    <span className="material-symbols-outlined text-white text-2xl">
+                    <span className="material-symbols-outlined text-white text-lg">
                       {item.icon}
                     </span>
                   </div>
-                  <span className={`font-semibold text-[17px] leading-snug word-keep-all`}>{item.text}</span>
+                  <span className={`font-semibold text-xs lg:text-[14px] leading-snug word-keep-all`}>{item.text}</span>
                 </div>
               ))}
             </div>

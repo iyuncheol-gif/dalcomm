@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { getImagePath } from "@/lib/utils";
 
 export default function Teachers() {
@@ -46,7 +47,50 @@ export default function Teachers() {
 
             <div className="max-w-2xl">
               <p className="text-[#2c323d] text-[17px] md:text-[18px] leading-[1.85] font-normal tracking-[-0.01em] whitespace-pre-line text-justify md:text-left">
-                영어는 <span className="font-bold text-[#111318]">‘감’</span>이 아니라 <span className="font-bold text-[#111318]">‘근거’</span>로 성장합니다.{'\n'}
+                영어는{' '}
+                <motion.span
+                  className="font-bold text-[#111318] relative inline-block px-1"
+                  whileInView={{
+                    color: ["#111318", "#1a4332", "#111318"],
+                    scale: [1, 1.1, 1],
+                  }}
+                  transition={{
+                    duration: 2.5,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  ‘감’
+                  <motion.span
+                    className="absolute bottom-0 left-0 w-full h-[2px] bg-[#1a4332]/30"
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: [0, 1, 0] }}
+                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                </motion.span>
+                이 아니라{' '}
+                <motion.span
+                  className="font-bold text-[#111318] relative inline-block px-1"
+                  whileInView={{
+                    color: ["#111318", "#123024", "#111318"],
+                    scale: [1, 1.1, 1],
+                  }}
+                  transition={{
+                    duration: 2.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.8
+                  }}
+                >
+                  ‘근거’
+                  <motion.span
+                    className="absolute bottom-0 left-0 w-full h-[2px] bg-[#1a4332]/30"
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: [0, 1, 0] }}
+                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+                  />
+                </motion.span>
+                로 성장합니다.{'\n'}
                 막연한 느낌으로 푸는 문제는 실력이 아닙니다. 정확한 데이터와 논리적인 분석을 통해 자신의 약점을 파악하고, 체계적인 훈련으로 극복하는 과정만이 진짜 실력을 만듭니다. 학생 한 명 한 명의 성향과 속도에 맞춘 깊이 있는 학습 설계로, 흔들리지 않는 영어 자신감을 심어드리겠습니다.
               </p>
             </div>

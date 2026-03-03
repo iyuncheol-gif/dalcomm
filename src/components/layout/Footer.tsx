@@ -103,7 +103,7 @@ export default function Footer() {
                     </span>
                     <a
                       href={CONTACT.PHONE_HREF}
-                      className="text-white text-xl font-bold hover:text-accent transition-colors"
+                      className="text-white text-[13px] font-bold hover:text-accent transition-colors"
                     >
                       {CONTACT.PHONE}
                     </a>
@@ -116,7 +116,7 @@ export default function Footer() {
                       href={CONTACT.KAKAO_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-white text-xl font-bold hover:text-accent transition-colors"
+                      className="text-white text-[13px] font-bold hover:text-accent transition-colors"
                     >
                       카카오톡 문의
                     </a>
