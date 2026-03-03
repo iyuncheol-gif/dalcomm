@@ -8,6 +8,7 @@ import Curriculum from '@/components/sections/Curriculum';
 import LearningSystem from '@/components/sections/LearningSystem';
 import Reviews from '@/components/sections/Reviews';
 import Teachers from '@/components/sections/Teachers';
+import Story from '@/components/sections/Story';
 import PreviewSection from '@/components/sections/PreviewSection';
 import Classes from '@/components/sections/Classes';
 import Consultation from '@/components/sections/Consultation';
@@ -26,6 +27,7 @@ export default function Home() {
         <LearningSystem />
         <Reviews />
         <Teachers />
+        <Story />
         <PreviewSection />
         <Classes />
         <Consultation />

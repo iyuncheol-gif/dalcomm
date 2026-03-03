@@ -29,6 +29,7 @@ export const NAV_ITEMS = [
   { name: '학습시스템', href: '#system' },
   { name: '성적/후기', href: '#reviews' },
   { name: '강사진', href: '#teachers' },
+  { name: '교육 이야기', href: '#story' },
   { name: '둘러보기', href: '#preview' },
   { name: '오시는길', href: '#location' },
 ] as const;
