@@ -9,9 +9,9 @@ import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 
 interface StoryPageProps {
-    params: {
+    params: Promise<{
         id: string;
-    };
+    }>;
 }
 
 // Generate static params for build time
@@ -21,8 +21,9 @@ export function generateStaticParams() {
     }));
 }
 
-export default function StoryDetail({ params }: StoryPageProps) {
-    const storyId = parseInt(params.id, 10);
+export default async function StoryDetail({ params }: StoryPageProps) {
+    const { id } = await params;
+    const storyId = parseInt(id, 10);
     const story = stories.find((s) => s.id === storyId);
 
     if (!story) {
