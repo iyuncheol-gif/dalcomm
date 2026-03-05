@@ -79,61 +79,67 @@ export default function Header() {
       {mobileMenuOpen &&
         typeof document !== 'undefined' &&
         createPortal(
-          <div className="fixed inset-0 z-[70] flex justify-end">
-            {/* Backdrop */}
-            <div
-              className="absolute inset-0 bg-black/5"
-              onClick={() => setMobileMenuOpen(false)}
-            />
-
-            {/* Drawer Panel */}
-            <div className="relative w-[50%] h-full bg-white/95 backdrop-blur-xl shadow-2xl flex flex-col p-6 animate-slide-in-right border-l border-slate-100">
-              {/* Drawer Header */}
-              <div className="flex items-center justify-end mb-8">
-                <button
-                  className="p-2 text-slate-400 hover:text-slate-600 transition-colors"
-                  onClick={() => setMobileMenuOpen(false)}
-                  aria-label="메뉴 닫기"
-                >
-                  <span className="material-symbols-outlined text-3xl">close</span>
-                </button>
+          <div className="fixed inset-0 z-[70] bg-slate-900 flex flex-col animate-fade-in">
+            {/* Header */}
+            <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
+              <div className="flex flex-col">
+                <span className="font-black text-lg text-white leading-none">달콤플러스</span>
+                <span className="text-[9px] font-bold text-accent tracking-[0.2em] uppercase mt-1 opacity-70">
+                  Premium English Academy
+                </span>
               </div>
+              <button
+                className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+                aria-label="메뉴 닫기"
+              >
+                <span className="material-symbols-outlined text-xl">close</span>
+              </button>
+            </div>
 
-              <nav className="flex flex-col gap-4 text-center">
-                {NAV_ITEMS.map((item) => (
-                  <a
-                    key={item.name}
-                    className="text-xl font-bold text-slate-800 hover:text-white hover:bg-primary-dark dark:text-slate-200 dark:hover:text-white dark:hover:bg-primary-dark transition-all duration-300 border-b border-slate-100 hover:border-transparent py-4 px-6 rounded-lg w-full block"
-                    href={item.href}
-                    onClick={(e) => handleNavClick(e, item.href.replace('#', ''))}
-                  >
+            {/* Nav */}
+            <nav className="flex-1 flex flex-col justify-center px-8 gap-1">
+              {NAV_ITEMS.map((item, index) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href.replace('#', ''))}
+                  className="group flex items-center gap-4 py-4 border-b border-white/10 last:border-none"
+                >
+                  <span className="text-xs font-bold text-white/30 w-6 shrink-0">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <span className="text-2xl font-black text-white/80 group-hover:text-white group-hover:translate-x-1 transition-all duration-200">
                     {item.name}
-                  </a>
-                ))}
-              </nav>
-
-              <div className="mt-auto space-y-3">
-                <a
-                  href="tel:0507-1338-8444"
-                  className="flex items-center justify-center gap-2 rounded-xl bg-slate-100 px-6 py-4 text-base font-bold text-slate-700 hover:bg-primary hover:text-white transition-all w-full"
-                >
-                  <span className="material-symbols-outlined text-xl">call</span>
-                  <span>전화 상담</span>
+                  </span>
+                  <span className="material-symbols-outlined text-base text-white/20 group-hover:text-accent ml-auto transition-colors">
+                    arrow_forward_ios
+                  </span>
                 </a>
+              ))}
+            </nav>
 
-                <a
-                  className="flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-4 text-base font-bold text-white shadow-xl shadow-primary/20 transition-all active:scale-95 w-full whitespace-nowrap"
-                  href="#consultation"
-                  onClick={(e) => {
-                    setMobileMenuOpen(false);
-                    scrollToElement('consultation', 100);
-                    e.preventDefault();
-                  }}
-                >
-                  <span>상담 신청</span>
-                  <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
-                </a>
-              </div>
+            {/* Bottom CTA */}
+            <div className="px-6 pb-8 pt-4 flex flex-col gap-3 border-t border-white/10">
+              <a
+                href="tel:0507-1338-8444"
+                className="flex items-center justify-center gap-2 rounded-2xl bg-white/10 px-6 py-4 text-sm font-bold text-white hover:bg-white/20 transition-all"
+              >
+                <span className="material-symbols-outlined text-lg">call</span>
+                <span>전화 상담</span>
+              </a>
+              <a
+                href="#consultation"
+                className="flex items-center justify-center gap-2 rounded-2xl bg-accent px-6 py-4 text-sm font-bold text-white shadow-lg shadow-accent/30 active:scale-95 transition-all"
+                onClick={(e) => {
+                  setMobileMenuOpen(false);
+                  scrollToElement('consultation', 100);
+                  e.preventDefault();
+                }}
+              >
+                <span>상담 신청</span>
+                <span className="material-symbols-outlined text-lg">arrow_forward</span>
+              </a>
             </div>
           </div>,
           document.body

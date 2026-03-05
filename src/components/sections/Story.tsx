@@ -10,7 +10,7 @@ export default function Story() {
     return (
         <section id="story" className="py-24 bg-white dark:bg-slate-900 overflow-hidden relative">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div className="flex flex-col md:flex-row justify-between items-end mb-4 gap-6">
                     <div className="text-left">
                         <motion.span
                             initial={{ opacity: 0, y: 20 }}
@@ -27,8 +27,7 @@ export default function Story() {
                             transition={{ delay: 0.1 }}
                             className="text-3xl font-black text-slate-900 dark:text-white sm:text-4xl"
                         >
-                            달콤플러스
-                            <br className="sm:hidden" /> 교육 이야기
+                            달콤플러스 교육 이야기
                         </motion.h2>
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
