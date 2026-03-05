@@ -65,7 +65,7 @@ export default async function StoryDetail({ params }: StoryPageProps) {
                     </header>
 
                     {/* Content Section */}
-                    <div className="prose prose-lg dark:prose-invert prose-slate max-w-none prose-headings:font-bold prose-a:text-primary hover:prose-a:underline prose-img:rounded-2xl mx-auto sm:px-4 leading-loose word-keep-all">
+                    <div className="prose dark:prose-invert prose-slate max-w-none prose-headings:font-bold prose-a:text-primary hover:prose-a:underline prose-img:rounded-2xl mx-auto sm:px-4 leading-relaxed tracking-tight word-keep-all">
                         <ReactMarkdown rehypePlugins={[rehypeRaw]}>
                             {story.content}
                         </ReactMarkdown>

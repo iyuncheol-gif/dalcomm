@@ -7,6 +7,7 @@ declare global {
         Marker: new (options: MarkerOptions) => KakaoMarker;
         InfoWindow: new (options: InfoWindowOptions) => KakaoInfoWindow;
         ZoomControl: new () => KakaoZoomControl;
+        CustomOverlay: new (options: CustomOverlayOptions) => KakaoCustomOverlay;
         LatLng: new (lat: number, lng: number) => KakaoLatLng;
         ControlPosition: {
           RIGHT: number;
@@ -52,6 +53,18 @@ interface KakaoInfoWindow {
 }
 
 interface KakaoZoomControl {}
+
+interface CustomOverlayOptions {
+  position: KakaoLatLng;
+  content: string | HTMLElement;
+  yAnchor?: number;
+  xAnchor?: number;
+  zIndex?: number;
+}
+
+interface KakaoCustomOverlay {
+  setMap: (map: KakaoMap | null) => void;
+}
 
 interface KakaoLatLng {}
 
