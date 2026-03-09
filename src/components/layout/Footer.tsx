@@ -6,6 +6,7 @@ import { CONTACT, BUSINESS_INFO, HOURS, SOCIAL } from '@/constants';
 import { handleScrollClick } from '@/lib/scroll';
 import { getImagePath } from '@/lib/utils';
 import PrivacyModal from '@/components/ui/PrivacyModal';
+import VisitorCounter from '@/components/VisitorCounter';
 
 export default function Footer() {
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
@@ -214,7 +215,10 @@ export default function Footer() {
               </div>
 
               <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-medium text-slate-600 uppercase tracking-widest">
-                <p>© 2024 DALKOM PLUS ACADEMY. ALL RIGHTS RESERVED.</p>
+                <div className="flex flex-col sm:flex-row items-center gap-3">
+                  <p>© 2024 DALKOM PLUS ACADEMY. ALL RIGHTS RESERVED.</p>
+                  <VisitorCounter />
+                </div>
                 <div className="flex gap-6">
                   <a href="#" className="hover:text-slate-400 transition-colors">
                     Terms of Use
