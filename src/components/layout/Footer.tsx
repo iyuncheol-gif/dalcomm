@@ -94,7 +94,7 @@ export default function Footer() {
             {/* Contact & Links Section */}
             <div className="flex flex-col sm:flex-row gap-6 lg:gap-16">
               <div>
-                <h4 className="mb-4 font-bold text-white text-base tracking-tight border-l-2 border-accent pl-3">
+                <h4 className="mb-4 font-bold text-white text-base tracking-tight">
                   상담 및 안내
                 </h4>
                 <ul className="space-y-4 text-[13px] font-medium">
@@ -135,7 +135,7 @@ export default function Footer() {
               </div>
 
               <div>
-                <h4 className="mb-4 font-bold text-white text-base tracking-tight border-l-2 border-accent pl-3">
+                <h4 className="mb-4 font-bold text-white text-base tracking-tight">
                   고객 서비스
                 </h4>
                 <div className="flex flex-col gap-3.5 text-[13px] font-medium">
