@@ -215,25 +215,8 @@ export default function Footer() {
               </div>
 
               <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-medium text-slate-600 uppercase tracking-widest">
-                <div className="flex flex-col sm:flex-row items-center gap-3">
-                  <p>© 2024 DALKOM PLUS ACADEMY. ALL RIGHTS RESERVED.</p>
-                  <VisitorCounter />
-                </div>
-                <div className="flex gap-6">
-                  <a href="#" className="hover:text-slate-400 transition-colors">
-                    Terms of Use
-                  </a>
-                  <a
-                    href="#"
-                    className="hover:text-slate-400 transition-colors"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setIsPrivacyOpen(true);
-                    }}
-                  >
-                    Privacy Policy
-                  </a>
-                </div>
+                <p>© 2024 DALKOM PLUS ACADEMY. ALL RIGHTS RESERVED.</p>
+                <VisitorCounter />
               </div>
             </div>
           </div>

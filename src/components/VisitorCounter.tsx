@@ -92,20 +92,20 @@ export default function VisitorCounter() {
   if (today === null || total === null || current === null) return null;
 
   return (
-    <div className="flex items-center gap-4 text-[11px] text-slate-500">
+    <div className="inline-flex items-center bg-slate-800/60 rounded-lg px-4 py-2 text-[11px] text-slate-500">
       <span className="flex items-center gap-1.5">
         <span className="material-symbols-outlined text-[14px] text-slate-500">calendar_today</span>
-        오늘 <strong className="text-slate-400">{today}</strong>
+        오늘 <strong className="text-slate-300 ml-0.5">{today}</strong>
       </span>
-      <span className="w-px h-3 bg-slate-700" />
+      <span className="w-px h-3.5 bg-slate-600 mx-4" />
       <span className="flex items-center gap-1.5">
         <span className="material-symbols-outlined text-[14px] text-slate-500">group</span>
-        전체 <strong className="text-slate-400">{total.toLocaleString()}</strong>
+        전체 <strong className="text-slate-300 ml-0.5">{total.toLocaleString()}</strong>
       </span>
-      <span className="w-px h-3 bg-slate-700" />
+      <span className="w-px h-3.5 bg-slate-600 mx-4" />
       <span className="flex items-center gap-1.5">
         <span className="material-symbols-outlined text-[14px] text-slate-500">person</span>
-        현재 <strong className="text-slate-400">{current}</strong>
+        현재 <strong className="text-slate-300 ml-0.5">{current}</strong>
       </span>
     </div>
   );
