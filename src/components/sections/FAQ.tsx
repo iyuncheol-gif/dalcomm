@@ -42,13 +42,13 @@ export default function FAQ() {
               key={i}
               className="group rounded-2xl bg-slate-50 p-6 [&_summary::-webkit-details-marker]:hidden border border-slate-100 dark:bg-slate-800 dark:border-slate-700 transition-colors hover:bg-slate-100 dark:hover:bg-slate-750"
             >
-              <summary className="flex cursor-pointer items-center justify-between text-slate-900 dark:text-white font-bold text-lg">
+              <summary className="flex cursor-pointer items-center justify-between text-slate-900 dark:text-white font-bold text-base">
                 {faq.q}
                 <span className="ml-4 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-white text-slate-500 shadow-sm transition duration-300 group-open:-rotate-180 dark:bg-slate-700 dark:text-slate-300">
                   <span className="material-symbols-outlined">expand_more</span>
                 </span>
               </summary>
-              <p className="mt-4 text-slate-600 dark:text-slate-400 leading-relaxed pl-1 word-keep-all whitespace-pre-line">
+              <p className="mt-4 text-sm text-slate-600 dark:text-slate-400 leading-relaxed pl-1 word-keep-all whitespace-pre-line">
                 {faq.a}
               </p>
             </details>
