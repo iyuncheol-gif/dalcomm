@@ -39,9 +39,9 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="bg-background-dark py-16 text-slate-400 font-footer border-t border-primary/10">
+      <footer className="bg-background-dark py-10 text-slate-400 font-footer border-t border-primary/10">
         <div className="mx-auto max-w-7xl pl-8 pr-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row justify-between gap-12 mb-16">
+          <div className="flex flex-col lg:flex-row justify-between gap-8 mb-10">
             {/* Branding Section */}
             <div className="max-w-md">
               <div className="flex items-center gap-5 mb-6">
@@ -61,7 +61,7 @@ export default function Footer() {
                   </span>
                 </div>
               </div>
-              <p className="text-base leading-relaxed mb-8 font-sans font-medium text-slate-300 word-keep-all">
+              <p className="text-base leading-relaxed mb-5 font-sans font-medium text-slate-300 word-keep-all">
                 변화하는 입시 환경 속에서 흔들리지 않는 실력을 만듭니다.
                 <br className="hidden md:block" />
                 결과로 증명하는 프리미엄 영어 교육, 달콤플러스.
@@ -194,8 +194,8 @@ export default function Footer() {
           </div>
 
           {/* Bottom Technical Info Area */}
-          <div className="pt-8 border-t border-slate-800">
-            <div className="flex flex-col gap-6">
+          <div className="pt-6 border-t border-slate-800">
+            <div className="flex flex-col gap-4">
               <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-[13px] font-medium text-slate-500">
                 <div className="flex items-center gap-2">
                   <span className="font-bold text-slate-400">상호명</span>
