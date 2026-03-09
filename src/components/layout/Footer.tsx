@@ -39,12 +39,12 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="bg-background-dark py-10 text-slate-400 font-footer border-t border-primary/10">
+      <footer className="bg-background-dark py-6 text-slate-400 font-footer border-t border-primary/10">
         <div className="mx-auto max-w-7xl pl-8 pr-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row justify-between gap-8 mb-10">
+          <div className="flex flex-col lg:flex-row justify-between gap-6 mb-3">
             {/* Branding Section */}
             <div className="max-w-md">
-              <div className="flex items-center gap-5 mb-6">
+              <div className="flex items-center gap-5 mb-3">
                 <Image
                   src={getImagePath('/logo.png')}
                   alt="달콤플러스 로고"
@@ -61,7 +61,7 @@ export default function Footer() {
                   </span>
                 </div>
               </div>
-              <p className="text-base leading-relaxed mb-5 font-sans font-medium text-slate-300 word-keep-all">
+              <p className="text-sm leading-relaxed mb-3 font-sans font-medium text-slate-300 word-keep-all">
                 변화하는 입시 환경 속에서 흔들리지 않는 실력을 만듭니다.
                 <br className="hidden md:block" />
                 결과로 증명하는 프리미엄 영어 교육, 달콤플러스.
@@ -92,9 +92,9 @@ export default function Footer() {
             </div>
 
             {/* Contact & Links Section */}
-            <div className="flex flex-col sm:flex-row gap-10 lg:gap-20">
+            <div className="flex flex-col sm:flex-row gap-6 lg:gap-16">
               <div>
-                <h4 className="mb-6 font-bold text-white text-base tracking-tight border-l-2 border-accent pl-3">
+                <h4 className="mb-4 font-bold text-white text-base tracking-tight border-l-2 border-accent pl-3">
                   상담 및 안내
                 </h4>
                 <ul className="space-y-4 text-[13px] font-medium">
@@ -135,7 +135,7 @@ export default function Footer() {
               </div>
 
               <div>
-                <h4 className="mb-6 font-bold text-white text-base tracking-tight border-l-2 border-accent pl-3">
+                <h4 className="mb-4 font-bold text-white text-base tracking-tight border-l-2 border-accent pl-3">
                   고객 서비스
                 </h4>
                 <div className="flex flex-col gap-3.5 text-[13px] font-medium">
@@ -194,8 +194,8 @@ export default function Footer() {
           </div>
 
           {/* Bottom Technical Info Area */}
-          <div className="pt-6 border-t border-slate-800">
-            <div className="flex flex-col gap-4">
+          <div className="pt-4 border-t border-slate-800">
+            <div className="flex flex-col gap-3">
               <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-[13px] font-medium text-slate-500">
                 <div className="flex items-center gap-2">
                   <span className="font-bold text-slate-400">상호명</span>
