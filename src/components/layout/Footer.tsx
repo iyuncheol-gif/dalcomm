@@ -82,13 +82,15 @@ export default function Footer() {
 
           {/* 하단: 사업자 정보 + 저작권 + 카운터 */}
           <div className="pt-4 border-t border-slate-800">
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-1 text-[11px] text-slate-600 mb-3">
-              <span>{BUSINESS_INFO.NAME}</span>
-              <span>대표 {BUSINESS_INFO.REPRESENTATIVE}</span>
-              <span className="break-keep">{CONTACT.ADDRESS}, {CONTACT.ADDRESS_DETAIL}</span>
-            </div>
-            <div className="flex flex-col sm:flex-row justify-between items-center gap-3 text-[10px] text-slate-600 uppercase tracking-widest font-medium">
-              <p>&copy; 2024 DALKOM PLUS ACADEMY. ALL RIGHTS RESERVED.</p>
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+              <div className="flex flex-col gap-0.5 text-[11px] text-slate-600">
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-0.5">
+                  <span>{BUSINESS_INFO.NAME}</span>
+                  <span>대표 {BUSINESS_INFO.REPRESENTATIVE}</span>
+                  <span className="break-keep">{CONTACT.ADDRESS}, {CONTACT.ADDRESS_DETAIL}</span>
+                </div>
+                <p className="text-[10px] uppercase tracking-widest font-medium">&copy; 2024 DALKOM PLUS ACADEMY. ALL RIGHTS RESERVED.</p>
+              </div>
               <VisitorCounter />
             </div>
           </div>
