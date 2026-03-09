@@ -67,6 +67,13 @@ export default function RootLayout({
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css"
           rel="stylesheet"
         />
+        {/* Counter.dev Analytics */}
+        <script
+          src="https://cdn.counter.dev/script.js"
+          data-id="c4f396b0-e9d6-484c-86c5-7db72cf14256"
+          data-utcoffset="9"
+          async
+        />
       </head>
       <body className={`${notoSansKr.className} ${playfair.variable} bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden`}>
         <JsonLd />
