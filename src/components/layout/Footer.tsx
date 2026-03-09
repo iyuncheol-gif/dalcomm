@@ -1,79 +1,67 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
-import { CONTACT, BUSINESS_INFO, HOURS, SOCIAL } from '@/constants';
-import { handleScrollClick } from '@/lib/scroll';
+import { CONTACT, BUSINESS_INFO, SOCIAL } from '@/constants';
 import { getImagePath } from '@/lib/utils';
 import PrivacyModal from '@/components/ui/PrivacyModal';
 import VisitorCounter from '@/components/VisitorCounter';
 
 export default function Footer() {
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
-  const [showTuitionToast, setShowTuitionToast] = useState(false);
-  const tuitionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (showTuitionToast) {
-      const timer = setTimeout(() => {
-        setShowTuitionToast(false);
-      }, 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [showTuitionToast]);
-
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (tuitionRef.current && !tuitionRef.current.contains(event.target as Node)) {
-        setShowTuitionToast(false);
-      }
-    }
-
-    if (showTuitionToast) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [showTuitionToast]);
 
   return (
     <>
       <footer className="bg-background-dark py-6 text-slate-400 font-footer border-t border-primary/10">
-        <div className="mx-auto max-w-7xl pl-8 pr-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row justify-between gap-6 mb-3">
-            {/* Branding Section */}
-            <div className="max-w-md">
-              <div className="flex items-center gap-5 mb-3">
-                <Image
-                  src={getImagePath('/logo.png')}
-                  alt="달콤플러스 로고"
-                  width={64}
-                  height={64}
-                  className="h-16 w-16 object-cover rounded-full"
-                />
-                <div className="flex flex-col">
-                  <span className="font-sans text-2xl font-black text-white leading-none">
-                    달콤플러스
-                  </span>
-                  <span className="text-xs font-bold text-accent tracking-[0.2em] mt-1.5 opacity-80 uppercase">
-                    Premium English Academy
-                  </span>
-                </div>
-              </div>
-              <p className="text-sm leading-relaxed mb-3 font-sans font-medium text-slate-300 word-keep-all">
-                변화하는 입시 환경 속에서 흔들리지 않는 실력을 만듭니다.
-                <br className="hidden md:block" />
-                결과로 증명하는 프리미엄 영어 교육, 달콤플러스.
-              </p>
-              <div className="flex gap-4">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* 상단: 로고 + 연락처/링크 + SNS */}
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-5">
+            <div className="flex items-center gap-4">
+              <Image
+                src={getImagePath('/logo.png')}
+                alt="달콤플러스 로고"
+                width={40}
+                height={40}
+                className="h-10 w-10 object-cover rounded-full"
+              />
+              <span className="font-sans text-lg font-black text-white">달콤플러스</span>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[13px] font-medium">
+              <a
+                href={CONTACT.PHONE_HREF}
+                className="flex items-center gap-1.5 text-slate-300 hover:text-accent transition-colors"
+              >
+                <span className="material-symbols-outlined text-accent text-[16px]">call</span>
+                {CONTACT.PHONE}
+              </a>
+              <a
+                href={CONTACT.KAKAO_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-slate-300 hover:text-accent transition-colors"
+              >
+                <span className="material-symbols-outlined text-accent text-[16px]">chat_bubble</span>
+                카카오톡 문의
+              </a>
+              <a
+                className="flex items-center gap-1.5 text-slate-400 hover:text-accent transition-colors cursor-pointer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsPrivacyOpen(true);
+                }}
+              >
+                <span className="material-symbols-outlined text-[16px]">lock</span>
+                개인정보처리방침
+              </a>
+              <div className="flex items-center gap-2">
                 {[
                   { label: 'Instagram', url: SOCIAL.INSTAGRAM, icon: 'instagram.png' },
                   { label: 'Naver Blog', url: SOCIAL.NAVER_BLOG, icon: 'naver.png' },
                 ].map((social, i) => (
                   <a
                     key={i}
-                    className="flex h-10 w-10 items-center justify-center rounded-xl bg-surface-dark text-slate-400 transition hover:bg-accent hover:text-white group"
+                    className="flex h-8 w-8 items-center justify-center rounded-lg bg-surface-dark transition hover:bg-accent group"
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -82,142 +70,26 @@ export default function Footer() {
                     <Image
                       src={getImagePath(`/${social.icon}`)}
                       alt={social.label}
-                      width={24}
-                      height={24}
-                      className="w-6 h-6 object-contain opacity-70 group-hover:opacity-100"
+                      width={20}
+                      height={20}
+                      className="w-5 h-5 object-contain opacity-70 group-hover:opacity-100"
                     />
                   </a>
                 ))}
               </div>
             </div>
-
-            {/* Contact & Links Section */}
-            <div className="flex flex-col sm:flex-row gap-6 lg:gap-16">
-              <div>
-                <h4 className="mb-4 font-bold text-white text-base tracking-tight">
-                  상담 및 안내
-                </h4>
-                <ul className="space-y-4 text-[13px] font-medium">
-                  <li className="flex items-center gap-2.5">
-                    <span className="material-symbols-outlined text-accent text-[18px]">
-                      call
-                    </span>
-                    <a
-                      href={CONTACT.PHONE_HREF}
-                      className="text-white text-[13px] font-bold hover:text-accent transition-colors"
-                    >
-                      {CONTACT.PHONE}
-                    </a>
-                  </li>
-                  <li className="flex items-center gap-2.5">
-                    <span className="material-symbols-outlined text-accent text-[16px]">
-                      chat_bubble
-                    </span>
-                    <a
-                      href={CONTACT.KAKAO_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white text-[13px] font-bold hover:text-accent transition-colors"
-                    >
-                      카카오톡 문의
-                    </a>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="material-symbols-outlined text-accent text-[18px]">
-                      schedule
-                    </span>
-                    <div className="text-slate-400">
-                      <p className="text-xs">평일: {HOURS.WEEKDAY}</p>
-                      <p className="text-xs">토요일: {HOURS.WEEKEND}</p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="mb-4 font-bold text-white text-base tracking-tight">
-                  고객 서비스
-                </h4>
-                <div className="flex flex-col gap-3.5 text-[13px] font-medium">
-                  <a
-                    className="flex items-center gap-1.5 hover:text-accent transition-colors w-fit text-slate-400 cursor-pointer"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setIsPrivacyOpen(true);
-                    }}
-                  >
-                    <span className="material-symbols-outlined text-accent text-[16px]">
-                      chevron_right
-                    </span>{' '}
-                    개인정보처리방침
-                  </a>
-                  <div className="relative w-fit" ref={tuitionRef}>
-                    <a
-                      className="flex items-center gap-1.5 hover:text-accent transition-colors w-fit text-slate-400 cursor-pointer"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setShowTuitionToast((prev) => !prev);
-                      }}
-                    >
-                      <span className="material-symbols-outlined text-accent text-[16px]">
-                        chevron_right
-                      </span>{' '}
-                      교습비 안내
-                    </a>
-                    {showTuitionToast && (
-                      <div className="absolute top-full left-0 sm:left-auto sm:right-0 mt-2 z-[100] animate-fade-in-up w-max max-w-[280px] sm:max-w-xs">
-                        <div className="bg-slate-900/95 backdrop-blur text-white px-4 py-2.5 rounded-xl shadow-xl flex items-start gap-2 text-xs font-medium border border-slate-700/50">
-                          <span className="material-symbols-outlined text-accent text-sm shrink-0 mt-0.5">
-                            info
-                          </span>
-                          <span className="break-keep leading-relaxed">
-                            학생의 상황 및 교육 횟수에 따라 금액은 변경됩니다.
-                          </span>
-                        </div>
-                        <div className="absolute -top-1 left-4 sm:left-auto sm:right-10 w-2 h-2 bg-slate-900/95 rotate-45 border-l border-t border-slate-700/50"></div>
-                      </div>
-                    )}
-                  </div>
-                  <a
-                    className="flex items-center gap-1.5 hover:text-accent transition-colors w-fit text-slate-400 cursor-pointer"
-                    href="#location"
-                    onClick={(e) => handleScrollClick(e, 'location', 100)}
-                  >
-                    <span className="material-symbols-outlined text-accent text-[16px]">
-                      chevron_right
-                    </span>{' '}
-                    오시는 길
-                  </a>
-                </div>
-              </div>
-            </div>
           </div>
 
-          {/* Bottom Technical Info Area */}
+          {/* 하단: 사업자 정보 + 저작권 + 카운터 */}
           <div className="pt-4 border-t border-slate-800">
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-[13px] font-medium text-slate-500">
-                <div className="flex items-center gap-2">
-                  <span className="font-bold text-slate-400">상호명</span>
-                  <span>{BUSINESS_INFO.NAME}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="font-bold text-slate-400">대표</span>
-                  <span>{BUSINESS_INFO.REPRESENTATIVE}</span>
-                </div>
-
-                <div className="flex items-start gap-2">
-                  <span className="font-bold text-slate-400 shrink-0">주소</span>
-                  <span className="tracking-tight break-keep">
-                    {CONTACT.ADDRESS}, {CONTACT.ADDRESS_DETAIL}
-                  </span>
-                </div>
-              </div>
-
-              <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] font-medium text-slate-600 uppercase tracking-widest">
-                <p>© 2024 DALKOM PLUS ACADEMY. ALL RIGHTS RESERVED.</p>
-                <VisitorCounter />
-              </div>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-1 text-[11px] text-slate-600 mb-3">
+              <span>{BUSINESS_INFO.NAME}</span>
+              <span>대표 {BUSINESS_INFO.REPRESENTATIVE}</span>
+              <span className="break-keep">{CONTACT.ADDRESS}, {CONTACT.ADDRESS_DETAIL}</span>
+            </div>
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-3 text-[10px] text-slate-600 uppercase tracking-widest font-medium">
+              <p>&copy; 2024 DALKOM PLUS ACADEMY. ALL RIGHTS RESERVED.</p>
+              <VisitorCounter />
             </div>
           </div>
         </div>
