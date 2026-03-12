@@ -1,15 +1,11 @@
 'use client';
 
-import { useState } from 'react';
 import Image from 'next/image';
 import { CONTACT, BUSINESS_INFO, SOCIAL } from '@/constants';
 import { getImagePath } from '@/lib/utils';
-import PrivacyModal from '@/components/ui/PrivacyModal';
 import VisitorCounter from '@/components/VisitorCounter';
 
 export default function Footer() {
-  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
-
   return (
     <>
       <footer className="bg-background-dark py-6 text-slate-400 font-footer border-t border-primary/10">
@@ -43,16 +39,6 @@ export default function Footer() {
               >
                 <span className="material-symbols-outlined text-accent text-[16px]">chat_bubble</span>
                 카카오톡 문의
-              </a>
-              <a
-                className="flex items-center gap-1.5 text-slate-400 hover:text-accent transition-colors cursor-pointer"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setIsPrivacyOpen(true);
-                }}
-              >
-                <span className="material-symbols-outlined text-[16px]">lock</span>
-                개인정보처리방침
               </a>
               <div className="flex items-center gap-2">
                 {[
@@ -96,8 +82,6 @@ export default function Footer() {
           </div>
         </div>
       </footer>
-
-      <PrivacyModal isOpen={isPrivacyOpen} onClose={() => setIsPrivacyOpen(false)} />
     </>
   );
 }
