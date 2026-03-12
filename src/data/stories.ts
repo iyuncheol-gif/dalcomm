@@ -46,6 +46,10 @@ export const stories: Story[] = [
 
 논리적 사고력을 기르기 위해서는 몇가지 단계를 거칩니다.
 
+<br/>
+<img src="/900＿SmartSelect＿20250720＿014810＿Flexcil.jpg" alt="모의고사 수업 이미지" style="width: 100%; border-radius: 16px; margin: 1.5rem 0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);" />
+<br/>
+
 ---
 
 ### 1️⃣ 키워드 체크 - 본문의 핵심을 꿰뚫는 눈
