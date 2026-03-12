@@ -10,46 +10,33 @@ export default function Story() {
     return (
         <section id="story" className="py-24 bg-white dark:bg-slate-900 overflow-hidden relative">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col md:flex-row justify-between items-end mb-4 gap-6">
-                    <div className="text-left">
-                        <motion.span
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary font-bold tracking-wider text-xs uppercase mb-3"
-                        >
-                            Education Story
-                        </motion.span>
-                        <motion.h2
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.1 }}
-                            className="text-3xl font-black text-slate-900 dark:text-white sm:text-4xl"
-                        >
-                            달콤플러스 교육 이야기
-                        </motion.h2>
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                            className="mt-4 text-slate-600 dark:text-slate-400 max-w-2xl word-keep-all"
-                        >
-                            달콤플러스가 전하는 올바른 영어 학습법과 교육 철학을 만나보세요.
-                        </motion.p>
-                    </div>
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                <div className="text-left mb-4">
+                    <motion.span
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.3 }}
+                        className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary font-bold tracking-wider text-xs uppercase mb-3"
                     >
-                        <button className="hidden sm:flex items-center gap-2 text-primary font-bold hover:text-primary/80 transition-colors">
-                            전체보기
-                            <span className="material-symbols-outlined text-sm">arrow_forward_ios</span>
-                        </button>
-                    </motion.div>
+                        Education Story
+                    </motion.span>
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 }}
+                        className="text-3xl font-black text-slate-900 dark:text-white sm:text-4xl"
+                    >
+                        달콤플러스 교육 이야기
+                    </motion.h2>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                        className="mt-4 text-slate-600 dark:text-slate-400 max-w-2xl word-keep-all"
+                    >
+                        달콤플러스가 전하는 올바른 영어 학습법과 교육 철학을 만나보세요.
+                    </motion.p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -113,13 +100,6 @@ export default function Story() {
                             </motion.article>
                         </Link>
                     ))}
-                </div>
-
-                {/* Mobile View All Button */}
-                <div className="mt-10 flex justify-center sm:hidden">
-                    <button className="flex items-center justify-center w-full max-w-xs gap-2 py-4 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition-colors">
-                        전체보기
-                    </button>
                 </div>
             </div>
         </section>
