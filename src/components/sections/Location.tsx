@@ -36,76 +36,70 @@ export default function Location() {
     if (!isLoaded || !mapRef.current) return;
 
     const initMap = () => {
-      const geocoder = new window.kakao.maps.services.Geocoder();
-      const address = CONTACT.ADDRESS;
+      // 룸디헤어가 아닌 달콤플러스영어학원 실제 위치 좌표 (카카오맵 API 기준)
+      const position = new window.kakao.maps.LatLng(
+        37.2490271880235,
+        127.223038376961
+      );
 
-      geocoder.addressSearch(address, (result, status) => {
-        if (status === window.kakao.maps.services.Status.OK) {
-          const position = new window.kakao.maps.LatLng(
-            Number(result[0].y),
-            Number(result[0].x)
-          );
+      const options = {
+        center: position,
+        level: 4,
+      };
 
-          const options = {
-            center: position,
-            level: 4,
-          };
+      const map = new window.kakao.maps.Map(mapRef.current!, options);
 
-          const map = new window.kakao.maps.Map(mapRef.current!, options);
+      const overlayContent = `
+        <div style="
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          background: #fff;
+          border: 1.5px solid #e2e8f0;
+          border-radius: 999px;
+          padding: 6px 14px 6px 10px;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+          font-family: inherit;
+          white-space: nowrap;
+          transform: translateX(-50%);
+        ">
+          <span style="
+            width: 10px; height: 10px;
+            background: #f97316;
+            border-radius: 50%;
+            display: inline-block;
+            flex-shrink: 0;
+          "></span>
+          <span style="
+            font-size: 13px;
+            font-weight: 700;
+            color: #1e293b;
+            letter-spacing: -0.02em;
+          ">달콤플러스</span>
+          <div style="
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0; height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 8px solid #fff;
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
+          "></div>
+        </div>
+      `;
 
-          const overlayContent = `
-            <div style="
-              position: relative;
-              display: inline-flex;
-              align-items: center;
-              gap: 6px;
-              background: #fff;
-              border: 1.5px solid #e2e8f0;
-              border-radius: 999px;
-              padding: 6px 14px 6px 10px;
-              box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-              font-family: inherit;
-              white-space: nowrap;
-              transform: translateX(-50%);
-            ">
-              <span style="
-                width: 10px; height: 10px;
-                background: #f97316;
-                border-radius: 50%;
-                display: inline-block;
-                flex-shrink: 0;
-              "></span>
-              <span style="
-                font-size: 13px;
-                font-weight: 700;
-                color: #1e293b;
-                letter-spacing: -0.02em;
-              ">달콤플러스</span>
-              <div style="
-                position: absolute;
-                bottom: -8px;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 0; height: 0;
-                border-left: 6px solid transparent;
-                border-right: 6px solid transparent;
-                border-top: 8px solid #fff;
-                filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
-              "></div>
-            </div>
-          `;
-
-          const customOverlay = new window.kakao.maps.CustomOverlay({
-            position: position,
-            content: overlayContent,
-            yAnchor: 1.4,
-          });
-          customOverlay.setMap(map);
-
-          const zoomControl = new window.kakao.maps.ZoomControl();
-          map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT);
-        }
+      const customOverlay = new window.kakao.maps.CustomOverlay({
+        position: position,
+        content: overlayContent,
+        yAnchor: 1.4,
       });
+      customOverlay.setMap(map);
+
+      const zoomControl = new window.kakao.maps.ZoomControl();
+      map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT);
     };
 
     window.kakao.maps.load(initMap);
