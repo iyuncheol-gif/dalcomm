@@ -14,11 +14,6 @@ export const BUSINESS_INFO = {
   REGISTRATION: '',
 } as const;
 
-export const HOURS = {
-  WEEKDAY: '14:00 - 22:00',
-  WEEKEND: '10:00 - 17:00',
-} as const;
-
 export const SOCIAL = {
   INSTAGRAM: 'https://www.instagram.com/thesweetenglish',
   NAVER_BLOG: 'https://blog.naver.com/goodchef',

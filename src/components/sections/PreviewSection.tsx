@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { getImagePath } from '@/lib/utils';
+import SectionHeader from '@/components/ui/SectionHeader';
 
 export default function PreviewSection() {
   const galleryItems = [
@@ -55,36 +56,17 @@ export default function PreviewSection() {
       className="py-24 bg-slate-50 dark:bg-slate-900 overflow-hidden"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary font-bold tracking-wider text-xs uppercase mb-3"
-          >
-            Facility Tour
-          </motion.span>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-3xl font-black text-slate-900 dark:text-white sm:text-4xl"
-          >
-            학습에 최적화된
-            <br className="sm:hidden" /> 프리미엄 교육 공간
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="mt-4 text-slate-600 dark:text-slate-400 max-w-2xl mx-auto word-keep-all"
-          >
-            학생들이 오직 공부에만 집중할 수 있도록 설계된 달콤플러스만의 공간을
-            미리 둘러보세요.
-          </motion.p>
-        </div>
+        <SectionHeader
+          label="Facility Tour"
+          title={
+            <>
+              학습에 최적화된
+              <br className="sm:hidden" /> 프리미엄 교육 공간
+            </>
+          }
+          description="학생들이 오직 공부에만 집중할 수 있도록 설계된 달콤플러스만의 공간을 미리 둘러보세요."
+          align="center"
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[250px] md:auto-rows-[200px]">
           {galleryItems.map((item, index) => (

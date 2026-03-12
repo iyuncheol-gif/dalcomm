@@ -3,16 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { handleScrollClick } from '@/lib/scroll';
-
-type LetterInitial = {
-  x: number;
-  y: number;
-  r: number;
-  dx: number;
-  dy: number;
-  dr: number;
-  duration: number;
-};
+import ScatteredText, { LetterInitial } from '@/components/ui/ScatteredText';
 
 export default function Hero() {
   const letters = 'THESWEETENGLISH'.split('');
@@ -50,69 +41,14 @@ export default function Hero() {
         <div className="absolute top-[10%] right-[10%] w-[40vw] h-[40vw] bg-accent/10 rounded-full blur-[80px] mix-blend-multiply dark:bg-accent/5 dark:mix-blend-screen opacity-60"></div>
 
         {/* Scattered Text Animation (Desktop) */}
-        <div className="hidden md:flex absolute inset-0 items-center justify-center pointer-events-none z-0 overflow-hidden">
-          <div
-            className="w-full flex justify-between px-4 font-black text-slate-900 dark:text-white whitespace-nowrap select-none text-[6.5vw]"
-          >
-            {isClient && letterInitials.length > 0 &&
-              letters.map((char, i) => (
-                <motion.span
-                  key={i}
-                  initial={{
-                    x: `${letterInitials[i].x}vw`,
-                    y: `${letterInitials[i].y}vh`,
-                    opacity: 0,
-                    rotate: letterInitials[i].r,
-                  }}
-                  animate={
-                    isMerged
-                      ? {
-                        x: 0,
-                        y: 0,
-                        opacity: 0.15,
-                        rotate: 0,
-                      }
-                      : {
-                        x: [
-                          `${letterInitials[i].x}vw`,
-                          `${letterInitials[i].x + letterInitials[i].dx}vw`,
-                          `${letterInitials[i].x}vw`,
-                        ],
-                        y: [
-                          `${letterInitials[i].y}vh`,
-                          `${letterInitials[i].y + letterInitials[i].dy}vh`,
-                          `${letterInitials[i].y}vh`,
-                        ],
-                        rotate: [
-                          letterInitials[i].r,
-                          letterInitials[i].r + letterInitials[i].dr,
-                          letterInitials[i].r,
-                        ],
-                        opacity: [0.1, 0.3, 0.1],
-                      }
-                  }
-                  transition={
-                    isMerged
-                      ? {
-                        duration: 1.5,
-                        ease: 'easeOut',
-                        type: 'spring',
-                        damping: 20,
-                      }
-                      : {
-                        duration: letterInitials[i].duration,
-                        repeat: Infinity,
-                        repeatType: 'reverse',
-                        ease: 'easeInOut',
-                      }
-                  }
-                  className="inline-block"
-                >
-                  {char}
-                </motion.span>
-              ))}
-          </div>
-        </div>
+        <ScatteredText
+          isClient={isClient}
+          isMerged={isMerged}
+          letters={letters}
+          letterInitials={letterInitials}
+          containerClassName="hidden md:flex absolute inset-0 items-center justify-center pointer-events-none z-0 overflow-hidden"
+          textClassName="text-[6.5vw]"
+        />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -170,65 +106,14 @@ export default function Hero() {
         </div>
 
         {/* Scattered Text Animation (Mobile Flow) */}
-        <div className="md:hidden w-full flex justify-between px-4 py-12 font-black text-slate-900 dark:text-white whitespace-nowrap select-none text-[7.5vw] overflow-hidden">
-          {isClient && letterInitials.length > 0 &&
-            letters.map((char, i) => (
-              <motion.span
-                key={i}
-                initial={{
-                  x: `${letterInitials[i].x}vw`,
-                  y: `${letterInitials[i].y}vh`,
-                  opacity: 0,
-                  rotate: letterInitials[i].r,
-                }}
-                animate={
-                  isMerged
-                    ? {
-                      x: 0,
-                      y: 0,
-                      opacity: 0.15,
-                      rotate: 0,
-                    }
-                    : {
-                      x: [
-                        `${letterInitials[i].x}vw`,
-                        `${letterInitials[i].x + letterInitials[i].dx}vw`,
-                        `${letterInitials[i].x}vw`,
-                      ],
-                      y: [
-                        `${letterInitials[i].y}vh`,
-                        `${letterInitials[i].y + letterInitials[i].dy}vh`,
-                        `${letterInitials[i].y}vh`,
-                      ],
-                      rotate: [
-                        letterInitials[i].r,
-                        letterInitials[i].r + letterInitials[i].dr,
-                        letterInitials[i].r,
-                      ],
-                      opacity: [0.1, 0.3, 0.1],
-                    }
-                }
-                transition={
-                  isMerged
-                    ? {
-                      duration: 1.5,
-                      ease: 'easeOut',
-                      type: 'spring',
-                      damping: 20,
-                    }
-                    : {
-                      duration: letterInitials[i].duration,
-                      repeat: Infinity,
-                      repeatType: 'reverse',
-                      ease: 'easeInOut',
-                    }
-                }
-                className="inline-block"
-              >
-                {char}
-              </motion.span>
-            ))}
-        </div>
+        <ScatteredText
+          isClient={isClient}
+          isMerged={isMerged}
+          letters={letters}
+          letterInitials={letterInitials}
+          containerClassName="md:hidden py-12"
+          textClassName="text-[7.5vw]"
+        />
 
         <div className="mt-8 md:mt-20 max-w-5xl mx-auto rounded-3xl bg-white/95 backdrop-blur-sm p-5 shadow-[0_20px_50px_rgba(26,67,50,0.12)] ring-1 ring-slate-100 dark:bg-surface-dark dark:ring-accent/10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

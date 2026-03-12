@@ -23,6 +23,25 @@ export default function VisitorCounter() {
   const [current, setCurrent] = useState<number | null>(null);
 
   useEffect(() => {
+    const updateAndFetchActiveSession = async (visitorId: string) => {
+      // 현재 접속 기록 (5분 기준) 갱신
+      await supabase
+        .from('active_sessions')
+        .upsert(
+          { visitor_id: visitorId, last_active: new Date().toISOString() },
+          { onConflict: 'visitor_id' }
+        );
+
+      // 현재 접속자 수 (5분 이내 활동) 조회
+      const fiveMinAgo = new Date(Date.now() - 5 * 60 * 1000).toISOString();
+      const { count: currentCount } = await supabase
+        .from('active_sessions')
+        .select('*', { count: 'exact', head: true })
+        .gte('last_active', fiveMinAgo);
+      
+      setCurrent(currentCount ?? 0);
+    };
+
     const track = async () => {
       const visitorId = getVisitorId();
       const todayStr = getToday();
@@ -35,13 +54,7 @@ export default function VisitorCounter() {
           { onConflict: 'visited_at,visitor_id' }
         );
 
-      // 현재 접속 기록 (5분 기준)
-      await supabase
-        .from('active_sessions')
-        .upsert(
-          { visitor_id: visitorId, last_active: new Date().toISOString() },
-          { onConflict: 'visitor_id' }
-        );
+      await updateAndFetchActiveSession(visitorId);
 
       // 오늘 방문자 수
       const { count: todayCount } = await supabase
@@ -54,16 +67,8 @@ export default function VisitorCounter() {
         .from('page_views')
         .select('*', { count: 'exact', head: true });
 
-      // 현재 접속자 수 (5분 이내 활동)
-      const fiveMinAgo = new Date(Date.now() - 5 * 60 * 1000).toISOString();
-      const { count: currentCount } = await supabase
-        .from('active_sessions')
-        .select('*', { count: 'exact', head: true })
-        .gte('last_active', fiveMinAgo);
-
       setToday(todayCount ?? 0);
       setTotal(totalCount ?? 0);
-      setCurrent(currentCount ?? 0);
     };
 
     track();
@@ -71,19 +76,7 @@ export default function VisitorCounter() {
     // 1분마다 현재 접속 갱신
     const interval = setInterval(async () => {
       const visitorId = getVisitorId();
-      await supabase
-        .from('active_sessions')
-        .upsert(
-          { visitor_id: visitorId, last_active: new Date().toISOString() },
-          { onConflict: 'visitor_id' }
-        );
-
-      const fiveMinAgo = new Date(Date.now() - 5 * 60 * 1000).toISOString();
-      const { count: currentCount } = await supabase
-        .from('active_sessions')
-        .select('*', { count: 'exact', head: true })
-        .gte('last_active', fiveMinAgo);
-      setCurrent(currentCount ?? 0);
+      await updateAndFetchActiveSession(visitorId);
     }, 60000);
 
     return () => clearInterval(interval);
