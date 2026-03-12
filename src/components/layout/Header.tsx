@@ -69,7 +69,7 @@ export default function Header() {
             href="#consultation"
             onClick={(e) => handleNavClick(e, 'consultation')}
           >
-            <span>상담 신청</span>
+            <span>학습 상담 문의</span>
             <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
           </a>
         </div>
@@ -137,7 +137,7 @@ export default function Header() {
                   e.preventDefault();
                 }}
               >
-                <span>상담 신청</span>
+                <span>학습 상담 문의</span>
                 <span className="material-symbols-outlined text-lg">arrow_forward</span>
               </a>
             </div>
