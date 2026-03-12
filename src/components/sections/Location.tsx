@@ -44,7 +44,7 @@ export default function Location() {
 
       const options = {
         center: position,
-        level: 3, // 지도 확대 레벨 (숫자가 작을수록 확대됨)
+        level: 2, // 지도 확대 레벨 (숫자가 작을수록 확대됨)
       };
 
       const map = new window.kakao.maps.Map(mapRef.current!, options);
