@@ -15,7 +15,7 @@ export const stories: Story[] = [
     category: '수업 엿보기',
     title: '모의고사 수업 엿보기',
     desc: '단순한 문제풀이와 정답 맞히기를 넘어, 깊이 있는 독해력과 논리적 사고력을 길러주는 달콤플러스만의 모의고사 수업 방식을 소개합니다.',
-    date: '2026.03.13',
+    date: '2025.07.20',
     image: '/story5-hero.png',
     isNew: true,
     content: `
