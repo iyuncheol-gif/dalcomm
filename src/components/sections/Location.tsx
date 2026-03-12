@@ -62,7 +62,7 @@ export default function Location() {
           box-shadow: 0 2px 8px rgba(0,0,0,0.15);
           font-family: inherit;
           white-space: nowrap;
-          transform: translateX(-50%);
+          transform: translateY(-8px);
         ">
           <span style="
             width: 10px; height: 10px;
@@ -94,7 +94,8 @@ export default function Location() {
       const customOverlay = new window.kakao.maps.CustomOverlay({
         position: position,
         content: overlayContent,
-        yAnchor: 1.4,
+        xAnchor: 0.5,
+        yAnchor: 1,
       });
       customOverlay.setMap(map);
 
