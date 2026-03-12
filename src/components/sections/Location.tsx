@@ -36,7 +36,7 @@ export default function Location() {
     if (!isLoaded || !mapRef.current) return;
 
     const initMap = () => {
-      // 룸디헤어 실제 위치 좌표 (카카오맵 API 기준)
+      // 실제 위치 좌표 (카카오맵 API 기준)
       const position = new window.kakao.maps.LatLng(
         37.249027007816,
         127.22303837643
@@ -44,7 +44,7 @@ export default function Location() {
 
       const options = {
         center: position,
-        level: 4,
+        level: 3, // 지도 확대 레벨 (숫자가 작을수록 확대됨)
       };
 
       const map = new window.kakao.maps.Map(mapRef.current!, options);
