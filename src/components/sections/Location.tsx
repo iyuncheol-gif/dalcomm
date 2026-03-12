@@ -36,10 +36,10 @@ export default function Location() {
     if (!isLoaded || !mapRef.current) return;
 
     const initMap = () => {
-      // 룸디헤어가 아닌 달콤플러스영어학원 실제 위치 좌표 (카카오맵 API 기준)
+      // 룸디헤어 실제 위치 좌표 (카카오맵 API 기준)
       const position = new window.kakao.maps.LatLng(
-        37.2490271880235,
-        127.223038376961
+        37.249027007816,
+        127.22303837643
       );
 
       const options = {
