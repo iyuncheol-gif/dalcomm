@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     description: '결과가 다른 프리미엄 영어 교육. 상위권으로 가는 가장 확실한 선택.',
   },
   icons: {
-    icon: '/logo.png',
+    icon: '/logo_bg_none.png',
   },
   verification: {
     google: 'verification_token', // TODO: Add actual Google verification token
